@@ -136,44 +136,9 @@ namespace QuizzAPP.Managers
             return breakdown;
         }
 
-        /// <summary>
-        /// Get average time spent per question
-        /// </summary>
-        /// <returns>Average time per question</returns>
-        public TimeSpan GetAverageTimePerQuestion()
-        {
-            if (_results.Count == 0)
-                return TimeSpan.Zero;
 
-            var totalTicks = _results.Sum(r => r.TimeSpent.Ticks);
-            return new TimeSpan(totalTicks / _results.Count);
-        }
 
-        /// <summary>
-        /// Get total time spent on all questions
-        /// </summary>
-        /// <returns>Total time spent</returns>
-        public TimeSpan GetTotalTimeSpent()
-        {
-            return new TimeSpan(_results.Sum(r => r.TimeSpent.Ticks));
-        }
 
-        /// <summary>
-        /// Get performance summary
-        /// </summary>
-        /// <returns>Performance summary string</returns>
-        public string GetPerformanceSummary()
-        {
-            if (TotalQuestions == 0)
-                return "No questions answered yet.";
-
-            var totalTime = GetTotalTimeSpent();
-            var avgTime = GetAverageTimePerQuestion();
-
-            return $"Score: {ScoreFraction} ({ScorePercentage:F1}%) - Grade: {LetterGrade}\n" +
-                   $"Total Time: {totalTime.TotalMinutes:F1} minutes\n" +
-                   $"Average Time per Question: {avgTime.TotalSeconds:F1} seconds";
-        }
 
         /// <summary>
         /// Convert percentage to letter grade

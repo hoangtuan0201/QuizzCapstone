@@ -17,6 +17,7 @@ namespace QuizzAPP.Forms
         private readonly QuizManager _quizManager;
         private readonly ScoreCalculator _scoreCalculator;
         private readonly TimeTracker _timeTracker;
+
         private List<Question> _questions = new List<Question>();
         private int _currentQuestionIndex;
         private Question _currentQuestion = null!;
@@ -73,7 +74,6 @@ namespace QuizzAPP.Forms
             }
 
             _currentQuestion = _questions[_currentQuestionIndex];
-            _timeTracker.StartQuestion();
 
             // Update progress
             progressLabel.Text = $"Question {_currentQuestionIndex + 1} of {_questions.Count}";
@@ -147,11 +147,10 @@ namespace QuizzAPP.Forms
                 return;
             }
 
-            // Stop question timer and record result
-            var timeSpent = _timeTracker.StopQuestion();
+            // Record result
             bool isCorrect = _currentQuestion.IsAnswerCorrect(userAnswer);
-            
-            _scoreCalculator.RecordAnswer(_currentQuestion, userAnswer, isCorrect, timeSpent);
+
+            _scoreCalculator.RecordAnswer(_currentQuestion, userAnswer, isCorrect, TimeSpan.Zero);
 
             // Move to next question
             _currentQuestionIndex++;
@@ -188,10 +187,10 @@ namespace QuizzAPP.Forms
         private void ShowResults()
         {
             _timeTracker.StopQuiz();
-            
+
             var resultsForm = new QuizResultsForm(_scoreCalculator, _timeTracker);
             resultsForm.ShowDialog();
-            
+
             this.Close();
         }
 

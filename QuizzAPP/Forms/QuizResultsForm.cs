@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using QuizzAPP.Managers;
+using QuizzAPP.Models;
 using QuizzAPP.Utils;
 
 namespace QuizzAPP.Forms
@@ -31,8 +32,8 @@ namespace QuizzAPP.Forms
             // Set form properties
             this.Text = "Quiz Results";
             this.StartPosition = FormStartPosition.CenterParent;
-            this.Size = new Size(600, 500);
-            this.MinimumSize = new Size(500, 400);
+            this.Size = new Size(700, 700);
+            this.MinimumSize = new Size(700, 700);
 
             // Display results
             DisplayResults();
@@ -43,45 +44,67 @@ namespace QuizzAPP.Forms
             // Main score
             scoreLabel.Text = $"Score: {_scoreCalculator.ScoreFraction} ({_scoreCalculator.ScorePercentage:F1}%)";
             gradeLabel.Text = $"Grade: {_scoreCalculator.LetterGrade}";
-            
+
             // Time information
             var totalTime = _timeTracker.TotalElapsed;
-            timeLabel.Text = $"Total Time: {TimeTracker.FormatTime(totalTime)} ({totalTime.TotalMinutes:F1} minutes)";
-            
-            var avgTime = _scoreCalculator.GetAverageTimePerQuestion();
-            avgTimeLabel.Text = $"Average Time per Question: {TimeTracker.FormatTime(avgTime)}";
+            timeLabel.Text = $"Total Time: {TimeTracker.FormatTime(totalTime)}";
 
-            // Detailed breakdown
-            var breakdown = _scoreCalculator.GetScoreBreakdown();
-            breakdownLabel.Text = $"Multiple Choice: {breakdown.MultipleChoice.Fraction} ({breakdown.MultipleChoice.Percentage:F1}%)\n" +
-                                 $"Open Ended: {breakdown.OpenEnded.Fraction} ({breakdown.OpenEnded.Percentage:F1}%)\n" +
-                                 $"True/False: {breakdown.TrueFalse.Fraction} ({breakdown.TrueFalse.Percentage:F1}%)";
+            // Hide average time label since we don't track per-question time
+            avgTimeLabel.Visible = false;
 
-            // Performance message
-            string performanceMessage = GetPerformanceMessage(_scoreCalculator.ScorePercentage);
-            performanceLabel.Text = performanceMessage;
-            
-            // Set performance label color based on score
-            if (_scoreCalculator.ScorePercentage >= 80)
-                performanceLabel.ForeColor = MaterialTheme.SuccessColor;
-            else if (_scoreCalculator.ScorePercentage >= 60)
-                performanceLabel.ForeColor = MaterialTheme.WarningColor;
-            else
-                performanceLabel.ForeColor = MaterialTheme.ErrorColor;
+            // Show detailed answers instead of breakdown
+            DisplayDetailedAnswers();
+
+          
         }
 
-        private string GetPerformanceMessage(double percentage)
+        private void DisplayDetailedAnswers()
         {
-            return percentage switch
+            var results = _scoreCalculator.Results;
+            var detailsText = "";
+
+            for (int i = 0; i < results.Count; i++)
             {
-                >= 90 => "Excellent work! You have a strong understanding of geography.",
-                >= 80 => "Great job! You performed very well on this quiz.",
-                >= 70 => "Good work! You have a solid grasp of the material.",
-                >= 60 => "Not bad! Consider reviewing the topics you missed.",
-                >= 50 => "You're getting there! More practice will help improve your score.",
-                _ => "Keep studying! Review the material and try again."
-            };
+                var result = results[i];
+                var status = result.IsCorrect ? "✓" : "✗";
+                var statusText = result.IsCorrect ? "Correct" : "Wrong";
+
+                detailsText += $"Q{i + 1}: {status} {statusText}\r\n";
+                detailsText += $"Question: {result.Question.QuestionText}\r\n";
+
+                // Format user answer based on question type
+                string userAnswerDisplay = FormatUserAnswer(result);
+                detailsText += $"Your Answer: {userAnswerDisplay}\r\n";
+                detailsText += $"Correct Answer: {result.Question.CorrectAnswer}\r\n";
+
+                // Add separator line between questions
+                if (i < results.Count - 1)
+                {
+                    detailsText += "".PadRight(50, '-') + "\r\n";
+                }
+                detailsText += "\r\n";
+            }
+
+            detailedResultsTextBox.Text = detailsText.TrimEnd();
+            detailedResultsTextBox.SelectionStart = 0;
+            detailedResultsTextBox.ScrollToCaret();
         }
+
+        private string FormatUserAnswer(QuestionResult result)
+        {
+            if (result.Question is MultipleChoiceQuestion mcq)
+            {
+                // Convert index back to option text
+                if (int.TryParse(result.UserAnswer, out int index) && index >= 0 && index < mcq.Options.Count)
+                {
+                    return $"{index + 1}. {mcq.Options[index]}";
+                }
+            }
+
+            return result.UserAnswer;
+        }
+
+    
 
 
 
@@ -89,5 +112,6 @@ namespace QuizzAPP.Forms
         {
             this.Close();
         }
+
     }
 }

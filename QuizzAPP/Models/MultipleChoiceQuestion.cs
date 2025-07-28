@@ -98,27 +98,6 @@ namespace QuizzAPP.Models
             return displayText.TrimEnd();
         }
 
-        /// <summary>
-        /// Get option by index (1-based for display)
-        /// </summary>
-        /// <param name="index">1-based index</param>
-        /// <returns>Option text</returns>
-        public string GetOption(int index)
-        {
-            if (index < 1 || index > 4)
-                throw new ArgumentOutOfRangeException(nameof(index), "Option index must be between 1 and 4.");
-            
-            return Options[index - 1];
-        }
 
-        /// <summary>
-        /// Check if answer by 1-based index is correct
-        /// </summary>
-        /// <param name="selectedIndex">1-based index (1, 2, 3, 4)</param>
-        /// <returns>True if correct</returns>
-        public bool IsAnswerCorrectByIndex(int selectedIndex)
-        {
-            return selectedIndex - 1 == CorrectOptionIndex;
-        }
     }
 }

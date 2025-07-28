@@ -60,27 +60,7 @@ namespace QuizzAPP.Utils
             var mcq3 = new MultipleChoiceQuestion(0, "Which is the longest river in the world?", options3, 1);
             quizManager.AddQuestion(mcq3);
 
-            // Question 4: Highest mountain
-            var options4 = new List<string>
-            {
-                "K2",
-                "Kangchenjunga",
-                "Mount Everest",
-                "Lhotse"
-            };
-            var mcq4 = new MultipleChoiceQuestion(0, "What is the highest mountain in the world?", options4, 2);
-            quizManager.AddQuestion(mcq4);
-
-            // Question 5: Smallest continent
-            var options5 = new List<string>
-            {
-                "Europe",
-                "Antarctica",
-                "Australia",
-                "South America"
-            };
-            var mcq5 = new MultipleChoiceQuestion(0, "Which is the smallest continent by land area?", options5, 2);
-            quizManager.AddQuestion(mcq5);
+           
         }
 
         private static void LoadOpenEndedQuestions(QuizManager quizManager)
@@ -129,34 +109,9 @@ namespace QuizzAPP.Utils
             var tfq4 = new TrueFalseQuestion(0, "Antarctica has a permanent population of indigenous people.", false);
             quizManager.AddQuestion(tfq4);
 
-            // Question 5: Dead Sea location
-            var tfq5 = new TrueFalseQuestion(0, "The Dead Sea is the lowest point on Earth's surface.", true);
-            quizManager.AddQuestion(tfq5);
-
-            // Question 6: Greenland ownership
-            var tfq6 = new TrueFalseQuestion(0, "Greenland is an independent country.", false);
-            quizManager.AddQuestion(tfq6);
-
-            // Question 7: Equator and countries
-            var tfq7 = new TrueFalseQuestion(0, "The equator passes through more than 10 countries.", false);
-            quizManager.AddQuestion(tfq7);
-
-            // Question 8: Mediterranean Sea
-            var tfq8 = new TrueFalseQuestion(0, "The Mediterranean Sea is completely surrounded by land.", true);
-            quizManager.AddQuestion(tfq8);
+            
         }
 
-        /// <summary>
-        /// Get count of sample questions by type
-        /// </summary>
-        /// <returns>Summary of sample questions</returns>
-        public static string GetSampleQuestionsSummary()
-        {
-            return "Sample Questions Available:\n" +
-                   "• 5 Multiple Choice Questions\n" +
-                   "• 5 Open Ended Questions\n" +
-                   "• 8 True/False Questions\n" +
-                   "Total: 18 Geography Questions";
-        }
+
     }
 }

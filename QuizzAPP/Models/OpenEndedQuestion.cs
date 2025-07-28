@@ -78,41 +78,7 @@ namespace QuizzAPP.Models
                         .Replace(",", ""); // Remove commas
         }
 
-        /// <summary>
-        /// Add an alternative correct answer
-        /// </summary>
-        /// <param name="alternativeAnswer">Alternative answer to add</param>
-        public void AddAlternativeAnswer(string alternativeAnswer)
-        {
-            if (string.IsNullOrWhiteSpace(alternativeAnswer))
-                throw new ArgumentException("Alternative answer cannot be null or empty.");
 
-            if (!AlternativeAnswers.Contains(alternativeAnswer, StringComparer.OrdinalIgnoreCase))
-            {
-                AlternativeAnswers.Add(alternativeAnswer);
-            }
-        }
-
-        /// <summary>
-        /// Remove an alternative answer
-        /// </summary>
-        /// <param name="alternativeAnswer">Alternative answer to remove</param>
-        public void RemoveAlternativeAnswer(string alternativeAnswer)
-        {
-            AlternativeAnswers.RemoveAll(alt => 
-                string.Equals(alt, alternativeAnswer, StringComparison.OrdinalIgnoreCase));
-        }
-
-        /// <summary>
-        /// Get all possible correct answers (primary + alternatives)
-        /// </summary>
-        /// <returns>List of all correct answers</returns>
-        public List<string> GetAllCorrectAnswers()
-        {
-            var allAnswers = new List<string> { CorrectAnswer };
-            allAnswers.AddRange(AlternativeAnswers);
-            return allAnswers;
-        }
 
         /// <summary>
         /// Get formatted display text
@@ -123,18 +89,6 @@ namespace QuizzAPP.Models
             return base.GetDisplayText() + "\n(Enter your answer - 1 to 4 words)";
         }
 
-        /// <summary>
-        /// Validate that the answer length is appropriate (1-4 words)
-        /// </summary>
-        /// <param name="answer">Answer to validate</param>
-        /// <returns>True if valid length</returns>
-        public bool IsAnswerLengthValid(string answer)
-        {
-            if (string.IsNullOrWhiteSpace(answer))
-                return false;
 
-            string[] words = answer.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            return words.Length >= 1 && words.Length <= 4;
-        }
     }
 }

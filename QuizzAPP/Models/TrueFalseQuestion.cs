@@ -63,15 +63,7 @@ namespace QuizzAPP.Models
             return userAnswerBool == IsTrue;
         }
 
-        /// <summary>
-        /// Check if answer is correct using boolean value
-        /// </summary>
-        /// <param name="userAnswer">Boolean answer</param>
-        /// <returns>True if correct</returns>
-        public bool IsAnswerCorrect(bool userAnswer)
-        {
-            return userAnswer == IsTrue;
-        }
+
 
         /// <summary>
         /// Get formatted display text with True/False options
@@ -82,50 +74,6 @@ namespace QuizzAPP.Models
             return base.GetDisplayText() + "\n1. True\n2. False";
         }
 
-        /// <summary>
-        /// Get the opposite answer (for generating wrong options)
-        /// </summary>
-        /// <returns>The incorrect answer</returns>
-        public string GetIncorrectAnswer()
-        {
-            return IsTrue ? "False" : "True";
-        }
 
-        /// <summary>
-        /// Validate answer format without checking correctness
-        /// </summary>
-        /// <param name="answer">Answer to validate</param>
-        /// <returns>True if format is valid</returns>
-        public bool IsAnswerFormatValid(string answer)
-        {
-            if (string.IsNullOrWhiteSpace(answer))
-                return false;
-
-            string normalizedAnswer = answer.Trim().ToLowerInvariant();
-            
-            return normalizedAnswer is "true" or "false" or "t" or "f" or 
-                   "1" or "0" or "yes" or "no" or "y" or "n";
-        }
-
-        /// <summary>
-        /// Convert string answer to boolean
-        /// </summary>
-        /// <param name="answer">String answer</param>
-        /// <returns>Boolean representation</returns>
-        /// <exception cref="ArgumentException">If answer format is invalid</exception>
-        public bool ParseAnswerToBool(string answer)
-        {
-            if (string.IsNullOrWhiteSpace(answer))
-                throw new ArgumentException("Answer cannot be null or empty.");
-
-            string normalizedAnswer = answer.Trim().ToLowerInvariant();
-
-            return normalizedAnswer switch
-            {
-                "true" or "t" or "1" or "yes" or "y" => true,
-                "false" or "f" or "0" or "no" or "n" => false,
-                _ => throw new ArgumentException($"Invalid answer format: {answer}")
-            };
-        }
     }
 }

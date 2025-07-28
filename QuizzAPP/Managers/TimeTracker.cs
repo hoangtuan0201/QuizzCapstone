@@ -45,25 +45,7 @@ namespace QuizzAPP.Managers
         /// </summary>
         public DateTime QuestionStartTime => _questionStartTime;
 
-        /// <summary>
-        /// Event fired when quiz timer starts
-        /// </summary>
-        public event EventHandler? QuizStarted;
 
-        /// <summary>
-        /// Event fired when quiz timer stops
-        /// </summary>
-        public event EventHandler<TimeSpan>? QuizStopped;
-
-        /// <summary>
-        /// Event fired when question timer starts
-        /// </summary>
-        public event EventHandler? QuestionStarted;
-
-        /// <summary>
-        /// Event fired when question timer stops
-        /// </summary>
-        public event EventHandler<TimeSpan>? QuestionStopped;
 
         /// <summary>
         /// Constructor initializes stopwatches
@@ -86,8 +68,6 @@ namespace QuizzAPP.Managers
             _quizStartTime = DateTime.Now;
             _isQuizActive = true;
             _overallStopwatch.Start();
-            
-            OnQuizStarted();
         }
 
         /// <summary>
@@ -108,32 +88,10 @@ namespace QuizzAPP.Managers
                 StopQuestion();
             }
 
-            var elapsed = _overallStopwatch.Elapsed;
-            OnQuizStopped(elapsed);
-            return elapsed;
+            return _overallStopwatch.Elapsed;
         }
 
-        /// <summary>
-        /// Pause the overall quiz timer
-        /// </summary>
-        public void PauseQuiz()
-        {
-            if (_isQuizActive && _overallStopwatch.IsRunning)
-            {
-                _overallStopwatch.Stop();
-            }
-        }
 
-        /// <summary>
-        /// Resume the overall quiz timer
-        /// </summary>
-        public void ResumeQuiz()
-        {
-            if (_isQuizActive && !_overallStopwatch.IsRunning)
-            {
-                _overallStopwatch.Start();
-            }
-        }
 
         /// <summary>
         /// Start timing a new question
@@ -149,8 +107,6 @@ namespace QuizzAPP.Managers
             _questionStartTime = DateTime.Now;
             _isQuestionActive = true;
             _questionStopwatch.Restart();
-            
-            OnQuestionStarted();
         }
 
         /// <summary>
@@ -165,9 +121,7 @@ namespace QuizzAPP.Managers
             _questionStopwatch.Stop();
             _isQuestionActive = false;
 
-            var elapsed = _questionStopwatch.Elapsed;
-            OnQuestionStopped(elapsed);
-            return elapsed;
+            return _questionStopwatch.Elapsed;
         }
 
         /// <summary>
@@ -200,86 +154,8 @@ namespace QuizzAPP.Managers
             }
         }
 
-        /// <summary>
-        /// Get formatted time string with milliseconds
-        /// </summary>
-        /// <param name="timeSpan">Time to format</param>
-        /// <returns>Formatted time string with milliseconds</returns>
-        public static string FormatTimeDetailed(TimeSpan timeSpan)
-        {
-            return $"{FormatTime(timeSpan)}.{timeSpan.Milliseconds:D3}";
-        }
 
-        /// <summary>
-        /// Get time in minutes as decimal
-        /// </summary>
-        /// <param name="timeSpan">Time to convert</param>
-        /// <returns>Time in minutes</returns>
-        public static double GetMinutes(TimeSpan timeSpan)
-        {
-            return timeSpan.TotalMinutes;
-        }
 
-        /// <summary>
-        /// Get time in seconds as decimal
-        /// </summary>
-        /// <param name="timeSpan">Time to convert</param>
-        /// <returns>Time in seconds</returns>
-        public static double GetSeconds(TimeSpan timeSpan)
-        {
-            return timeSpan.TotalSeconds;
-        }
 
-        /// <summary>
-        /// Get current quiz time formatted for display
-        /// </summary>
-        /// <returns>Formatted current quiz time</returns>
-        public string GetFormattedQuizTime()
-        {
-            return FormatTime(TotalElapsed);
-        }
-
-        /// <summary>
-        /// Get current question time formatted for display
-        /// </summary>
-        /// <returns>Formatted current question time</returns>
-        public string GetFormattedQuestionTime()
-        {
-            return FormatTime(CurrentQuestionElapsed);
-        }
-
-        /// <summary>
-        /// Fire the QuizStarted event
-        /// </summary>
-        protected virtual void OnQuizStarted()
-        {
-            QuizStarted?.Invoke(this, EventArgs.Empty);
-        }
-
-        /// <summary>
-        /// Fire the QuizStopped event
-        /// </summary>
-        /// <param name="elapsed">Total elapsed time</param>
-        protected virtual void OnQuizStopped(TimeSpan elapsed)
-        {
-            QuizStopped?.Invoke(this, elapsed);
-        }
-
-        /// <summary>
-        /// Fire the QuestionStarted event
-        /// </summary>
-        protected virtual void OnQuestionStarted()
-        {
-            QuestionStarted?.Invoke(this, EventArgs.Empty);
-        }
-
-        /// <summary>
-        /// Fire the QuestionStopped event
-        /// </summary>
-        /// <param name="elapsed">Time spent on question</param>
-        protected virtual void OnQuestionStopped(TimeSpan elapsed)
-        {
-            QuestionStopped?.Invoke(this, elapsed);
-        }
     }
 }

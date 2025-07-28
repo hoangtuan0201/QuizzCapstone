@@ -29,7 +29,6 @@ partial class Form1
     private MaterialSkin.Controls.MaterialButton createGameButton;
     private MaterialSkin.Controls.MaterialButton playGameButton;
     private MaterialSkin.Controls.MaterialButton exitButton;
-    private MaterialSkin.Controls.MaterialButton loadSampleButton;
     private MaterialSkin.Controls.MaterialCard statsCard;
     private MaterialSkin.Controls.MaterialLabel statsLabel;
 
@@ -45,7 +44,6 @@ partial class Form1
         this.createGameButton = new MaterialSkin.Controls.MaterialButton();
         this.playGameButton = new MaterialSkin.Controls.MaterialButton();
         this.exitButton = new MaterialSkin.Controls.MaterialButton();
-        this.loadSampleButton = new MaterialSkin.Controls.MaterialButton();
         this.statsCard = new MaterialSkin.Controls.MaterialCard();
         this.statsLabel = new MaterialSkin.Controls.MaterialLabel();
         this.mainPanel.SuspendLayout();
@@ -55,7 +53,6 @@ partial class Form1
         // mainPanel
         //
         this.mainPanel.Controls.Add(this.exitButton);
-        this.mainPanel.Controls.Add(this.loadSampleButton);
         this.mainPanel.Controls.Add(this.playGameButton);
         this.mainPanel.Controls.Add(this.createGameButton);
         this.mainPanel.Controls.Add(this.statsCard);
@@ -135,27 +132,6 @@ partial class Form1
         this.playGameButton.UseAccentColor = true;
         this.playGameButton.UseVisualStyleBackColor = true;
         this.playGameButton.Click += new System.EventHandler(this.playGameButton_Click);
-        //
-        // loadSampleButton
-        //
-        this.loadSampleButton.AutoSize = false;
-        this.loadSampleButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        this.loadSampleButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-        this.loadSampleButton.Depth = 0;
-        this.loadSampleButton.HighEmphasis = false;
-        this.loadSampleButton.Icon = null;
-        this.loadSampleButton.Location = new System.Drawing.Point(50, 350);
-        this.loadSampleButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-        this.loadSampleButton.MouseState = MaterialSkin.MouseState.HOVER;
-        this.loadSampleButton.Name = "loadSampleButton";
-        this.loadSampleButton.NoAccentTextColor = System.Drawing.Color.Empty;
-        this.loadSampleButton.Size = new System.Drawing.Size(200, 36);
-        this.loadSampleButton.TabIndex = 6;
-        this.loadSampleButton.Text = "LOAD SAMPLE QUIZ";
-        this.loadSampleButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-        this.loadSampleButton.UseAccentColor = false;
-        this.loadSampleButton.UseVisualStyleBackColor = true;
-        this.loadSampleButton.Click += new System.EventHandler(this.loadSampleButton_Click);
         //
         // exitButton
         //
