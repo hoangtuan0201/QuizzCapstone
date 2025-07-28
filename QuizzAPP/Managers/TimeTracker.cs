@@ -3,9 +3,7 @@ using System.Diagnostics;
 
 namespace QuizzAPP.Managers
 {
-    /// <summary>
-    /// Tracks time spent on quiz questions and overall quiz - demonstrates Encapsulation
-    /// </summary>
+    // Theo dõi thời gian làm quiz và từng câu hỏi
     public class TimeTracker
     {
         private Stopwatch _overallStopwatch;
@@ -15,41 +13,45 @@ namespace QuizzAPP.Managers
         private bool _isQuizActive;
         private bool _isQuestionActive;
 
-        /// <summary>
-        /// Total time elapsed since quiz started
-        /// </summary>
-        public TimeSpan TotalElapsed => _overallStopwatch.Elapsed;
+        // Tổng thời gian đã trôi qua từ khi bắt đầu quiz
+        public TimeSpan TotalElapsed
+        {
+            get { return _overallStopwatch.Elapsed; }
+        }
 
-        /// <summary>
-        /// Time elapsed for current question
-        /// </summary>
-        public TimeSpan CurrentQuestionElapsed => _questionStopwatch.Elapsed;
+        // Thời gian đã trôi qua cho câu hỏi hiện tại
+        public TimeSpan CurrentQuestionElapsed
+        {
+            get { return _questionStopwatch.Elapsed; }
+        }
 
-        /// <summary>
-        /// Whether the quiz timer is currently running
-        /// </summary>
-        public bool IsQuizRunning => _isQuizActive && _overallStopwatch.IsRunning;
+        // Timer quiz có đang chạy không
+        public bool IsQuizRunning
+        {
+            get { return _isQuizActive && _overallStopwatch.IsRunning; }
+        }
 
-        /// <summary>
-        /// Whether the question timer is currently running
-        /// </summary>
-        public bool IsQuestionRunning => _isQuestionActive && _questionStopwatch.IsRunning;
+        // Timer câu hỏi có đang chạy không
+        public bool IsQuestionRunning
+        {
+            get { return _isQuestionActive && _questionStopwatch.IsRunning; }
+        }
 
-        /// <summary>
-        /// When the quiz was started
-        /// </summary>
-        public DateTime QuizStartTime => _quizStartTime;
+        // Thời điểm bắt đầu quiz
+        public DateTime QuizStartTime
+        {
+            get { return _quizStartTime; }
+        }
 
-        /// <summary>
-        /// When the current question was started
-        /// </summary>
-        public DateTime QuestionStartTime => _questionStartTime;
+        // Thời điểm bắt đầu câu hỏi hiện tại
+        public DateTime QuestionStartTime
+        {
+            get { return _questionStartTime; }
+        }
 
 
 
-        /// <summary>
-        /// Constructor initializes stopwatches
-        /// </summary>
+        // Constructor
         public TimeTracker()
         {
             _overallStopwatch = new Stopwatch();
@@ -57,9 +59,7 @@ namespace QuizzAPP.Managers
             Reset();
         }
 
-        /// <summary>
-        /// Start the overall quiz timer
-        /// </summary>
+        // Bắt đầu timer tổng thể của quiz
         public void StartQuiz()
         {
             if (_isQuizActive)
@@ -70,10 +70,7 @@ namespace QuizzAPP.Managers
             _overallStopwatch.Start();
         }
 
-        /// <summary>
-        /// Stop the overall quiz timer
-        /// </summary>
-        /// <returns>Total time elapsed</returns>
+        // Dừng timer tổng thể của quiz
         public TimeSpan StopQuiz()
         {
             if (!_isQuizActive)
@@ -93,9 +90,7 @@ namespace QuizzAPP.Managers
 
 
 
-        /// <summary>
-        /// Start timing a new question
-        /// </summary>
+        // Bắt đầu timer cho câu hỏi mới
         public void StartQuestion()
         {
             // Stop previous question if running
@@ -109,10 +104,7 @@ namespace QuizzAPP.Managers
             _questionStopwatch.Restart();
         }
 
-        /// <summary>
-        /// Stop timing the current question
-        /// </summary>
-        /// <returns>Time spent on the question</returns>
+        // Dừng timer câu hỏi hiện tại
         public TimeSpan StopQuestion()
         {
             if (!_isQuestionActive)
@@ -124,9 +116,7 @@ namespace QuizzAPP.Managers
             return _questionStopwatch.Elapsed;
         }
 
-        /// <summary>
-        /// Reset all timers
-        /// </summary>
+        // Reset tất cả timer
         public void Reset()
         {
             _overallStopwatch.Reset();
@@ -137,11 +127,7 @@ namespace QuizzAPP.Managers
             _questionStartTime = DateTime.MinValue;
         }
 
-        /// <summary>
-        /// Get formatted time string for display
-        /// </summary>
-        /// <param name="timeSpan">Time to format</param>
-        /// <returns>Formatted time string</returns>
+        // Format thời gian để hiển thị (MM:SS hoặc HH:MM:SS)
         public static string FormatTime(TimeSpan timeSpan)
         {
             if (timeSpan.TotalHours >= 1)
@@ -153,9 +139,40 @@ namespace QuizzAPP.Managers
                 return $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
             }
         }
-
-
-
-
     }
 }
+
+/*
+ * GIẢI THÍCH VỀ LỚP TIMETRACKER:
+ *
+ * 1. DUAL TIMER SYSTEM:
+ *    - _overallStopwatch: Theo dõi tổng thời gian làm quiz
+ *    - _questionStopwatch: Theo dõi thời gian từng câu hỏi
+ *    - Hoạt động độc lập nhưng có thể sync với nhau
+ *
+ * 2. STATE MANAGEMENT:
+ *    - _isQuizActive: Quiz có đang active không
+ *    - _isQuestionActive: Câu hỏi có đang active không
+ *    - DateTime tracking: Lưu thời điểm bắt đầu chính xác
+ *
+ * 3. CORE METHODS:
+ *    - StartQuiz()/StopQuiz(): Quản lý timer tổng thể
+ *    - StartQuestion()/StopQuestion(): Quản lý timer từng câu
+ *    - Reset(): Đặt lại tất cả timer về 0
+ *
+ * 4. PROPERTIES:
+ *    - TotalElapsed: Tổng thời gian đã trôi qua
+ *    - CurrentQuestionElapsed: Thời gian câu hỏi hiện tại
+ *    - IsQuizRunning/IsQuestionRunning: Trạng thái timer
+ *
+ * 5. UTILITY FEATURES:
+ *    - FormatTime(): Static method format thời gian đẹp
+ *    - Tự động dừng question timer khi dừng quiz
+ *    - Restart question timer khi bắt đầu câu mới
+ *
+ * 6. USE CASES:
+ *    - Hiển thị thời gian real-time trong UI
+ *    - Tính toán performance metrics
+ *    - Ghi lại thời gian hoàn thành quiz
+ *    - Phân tích thời gian trả lời từng câu
+ */

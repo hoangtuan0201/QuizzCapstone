@@ -159,13 +159,22 @@ namespace QuizzAPP.Forms
 
         private string GetUserAnswer()
         {
-            return _currentQuestion switch
+            if (_currentQuestion is MultipleChoiceQuestion)
             {
-                MultipleChoiceQuestion => GetMultipleChoiceAnswer(),
-                OpenEndedQuestion => answerTextBox.Text.Trim(),
-                TrueFalseQuestion => GetTrueFalseAnswer(),
-                _ => string.Empty
-            };
+                return GetMultipleChoiceAnswer();
+            }
+            else if (_currentQuestion is OpenEndedQuestion)
+            {
+                return answerTextBox.Text.Trim();
+            }
+            else if (_currentQuestion is TrueFalseQuestion)
+            {
+                return GetTrueFalseAnswer();
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
         private string GetMultipleChoiceAnswer()

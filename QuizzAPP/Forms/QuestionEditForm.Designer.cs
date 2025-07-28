@@ -60,448 +60,471 @@ namespace QuizzAPP.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainPanel = new System.Windows.Forms.Panel();
-            this.titleLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.questionTypeLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.questionTypeComboBox = new MaterialSkin.Controls.MaterialComboBox();
-            this.questionTextLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.questionTextBox = new MaterialSkin.Controls.MaterialTextBox();
-            this.multipleChoicePanel = new System.Windows.Forms.Panel();
-            this.optionsLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.option1TextBox = new MaterialSkin.Controls.MaterialTextBox();
-            this.option2TextBox = new MaterialSkin.Controls.MaterialTextBox();
-            this.option3TextBox = new MaterialSkin.Controls.MaterialTextBox();
-            this.option4TextBox = new MaterialSkin.Controls.MaterialTextBox();
-            this.correctAnswerLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.correctAnswerComboBox = new MaterialSkin.Controls.MaterialComboBox();
-            this.openEndedPanel = new System.Windows.Forms.Panel();
-            this.correctAnswerTextLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.correctAnswerTextBox = new MaterialSkin.Controls.MaterialTextBox();
-            this.alternativeAnswersLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.alternativeAnswersTextBox = new MaterialSkin.Controls.MaterialTextBox();
-            this.trueFalsePanel = new System.Windows.Forms.Panel();
-            this.trueFalseLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.trueFalseComboBox = new MaterialSkin.Controls.MaterialComboBox();
-            this.saveButton = new MaterialSkin.Controls.MaterialButton();
-            this.cancelButton = new MaterialSkin.Controls.MaterialButton();
-            this.mainPanel.SuspendLayout();
-            this.multipleChoicePanel.SuspendLayout();
-            this.openEndedPanel.SuspendLayout();
-            this.trueFalsePanel.SuspendLayout();
-            this.SuspendLayout();
+            mainPanel = new System.Windows.Forms.Panel();
+            cancelButton = new MaterialSkin.Controls.MaterialButton();
+            saveButton = new MaterialSkin.Controls.MaterialButton();
+            trueFalsePanel = new System.Windows.Forms.Panel();
+            trueFalseComboBox = new MaterialSkin.Controls.MaterialComboBox();
+            trueFalseLabel = new MaterialSkin.Controls.MaterialLabel();
+            openEndedPanel = new System.Windows.Forms.Panel();
+            alternativeAnswersTextBox = new MaterialSkin.Controls.MaterialTextBox();
+            alternativeAnswersLabel = new MaterialSkin.Controls.MaterialLabel();
+            correctAnswerTextBox = new MaterialSkin.Controls.MaterialTextBox();
+            correctAnswerTextLabel = new MaterialSkin.Controls.MaterialLabel();
+            multipleChoicePanel = new System.Windows.Forms.Panel();
+            correctAnswerComboBox = new MaterialSkin.Controls.MaterialComboBox();
+            correctAnswerLabel = new MaterialSkin.Controls.MaterialLabel();
+            option4TextBox = new MaterialSkin.Controls.MaterialTextBox();
+            option3TextBox = new MaterialSkin.Controls.MaterialTextBox();
+            option2TextBox = new MaterialSkin.Controls.MaterialTextBox();
+            option1TextBox = new MaterialSkin.Controls.MaterialTextBox();
+            optionsLabel = new MaterialSkin.Controls.MaterialLabel();
+            questionTextBox = new MaterialSkin.Controls.MaterialTextBox();
+            questionTextLabel = new MaterialSkin.Controls.MaterialLabel();
+            questionTypeComboBox = new MaterialSkin.Controls.MaterialComboBox();
+            questionTypeLabel = new MaterialSkin.Controls.MaterialLabel();
+            titleLabel = new MaterialSkin.Controls.MaterialLabel();
+            mainPanel.SuspendLayout();
+            trueFalsePanel.SuspendLayout();
+            openEndedPanel.SuspendLayout();
+            multipleChoicePanel.SuspendLayout();
+            SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.cancelButton);
-            this.mainPanel.Controls.Add(this.saveButton);
-            this.mainPanel.Controls.Add(this.trueFalsePanel);
-            this.mainPanel.Controls.Add(this.openEndedPanel);
-            this.mainPanel.Controls.Add(this.multipleChoicePanel);
-            this.mainPanel.Controls.Add(this.questionTextBox);
-            this.mainPanel.Controls.Add(this.questionTextLabel);
-            this.mainPanel.Controls.Add(this.questionTypeComboBox);
-            this.mainPanel.Controls.Add(this.questionTypeLabel);
-            this.mainPanel.Controls.Add(this.titleLabel);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(3, 64);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Padding = new System.Windows.Forms.Padding(24);
-            this.mainPanel.Size = new System.Drawing.Size(894, 683);
-            this.mainPanel.TabIndex = 0;
-            // 
-            // titleLabel
-            // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Depth = 0;
-            this.titleLabel.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.titleLabel.Location = new System.Drawing.Point(24, 24);
-            this.titleLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(174, 29);
-            this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "Edit Question";
-            // 
-            // questionTypeLabel
-            // 
-            this.questionTypeLabel.AutoSize = true;
-            this.questionTypeLabel.Depth = 0;
-            this.questionTypeLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.questionTypeLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.questionTypeLabel.Location = new System.Drawing.Point(24, 70);
-            this.questionTypeLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.questionTypeLabel.Name = "questionTypeLabel";
-            this.questionTypeLabel.Size = new System.Drawing.Size(101, 19);
-            this.questionTypeLabel.TabIndex = 1;
-            this.questionTypeLabel.Text = "Question Type";
-            // 
-            // questionTypeComboBox
-            // 
-            this.questionTypeComboBox.AutoResize = false;
-            this.questionTypeComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.questionTypeComboBox.Depth = 0;
-            this.questionTypeComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.questionTypeComboBox.DropDownHeight = 174;
-            this.questionTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.questionTypeComboBox.DropDownWidth = 121;
-            this.questionTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.questionTypeComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.questionTypeComboBox.FormattingEnabled = true;
-            this.questionTypeComboBox.IntegralHeight = false;
-            this.questionTypeComboBox.ItemHeight = 43;
-            this.questionTypeComboBox.Location = new System.Drawing.Point(24, 95);
-            this.questionTypeComboBox.MaxDropDownItems = 4;
-            this.questionTypeComboBox.MouseState = MaterialSkin.MouseState.OUT;
-            this.questionTypeComboBox.Name = "questionTypeComboBox";
-            this.questionTypeComboBox.Size = new System.Drawing.Size(300, 49);
-            this.questionTypeComboBox.StartIndex = 0;
-            this.questionTypeComboBox.TabIndex = 2;
-            this.questionTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.questionTypeComboBox_SelectedIndexChanged);
-            // 
-            // questionTextLabel
-            // 
-            this.questionTextLabel.AutoSize = true;
-            this.questionTextLabel.Depth = 0;
-            this.questionTextLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.questionTextLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.questionTextLabel.Location = new System.Drawing.Point(24, 160);
-            this.questionTextLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.questionTextLabel.Name = "questionTextLabel";
-            this.questionTextLabel.Size = new System.Drawing.Size(95, 19);
-            this.questionTextLabel.TabIndex = 3;
-            this.questionTextLabel.Text = "Question Text";
-            // 
-            // questionTextBox
-            // 
-            this.questionTextBox.AnimateReadOnly = false;
-            this.questionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.questionTextBox.Depth = 0;
-            this.questionTextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.questionTextBox.Hint = "Enter your question here...";
-            this.questionTextBox.LeadingIcon = null;
-            this.questionTextBox.Location = new System.Drawing.Point(24, 185);
-            this.questionTextBox.MaxLength = 500;
-            this.questionTextBox.MouseState = MaterialSkin.MouseState.OUT;
-            this.questionTextBox.Multiline = true;
-            this.questionTextBox.Name = "questionTextBox";
-            this.questionTextBox.Size = new System.Drawing.Size(646, 80);
-            this.questionTextBox.TabIndex = 4;
-            this.questionTextBox.Text = "";
-            this.questionTextBox.TrailingIcon = null;
-            // 
-            // multipleChoicePanel
-            // 
-            this.multipleChoicePanel.Controls.Add(this.correctAnswerComboBox);
-            this.multipleChoicePanel.Controls.Add(this.correctAnswerLabel);
-            this.multipleChoicePanel.Controls.Add(this.option4TextBox);
-            this.multipleChoicePanel.Controls.Add(this.option3TextBox);
-            this.multipleChoicePanel.Controls.Add(this.option2TextBox);
-            this.multipleChoicePanel.Controls.Add(this.option1TextBox);
-            this.multipleChoicePanel.Controls.Add(this.optionsLabel);
-            this.multipleChoicePanel.Location = new System.Drawing.Point(24, 280);
-            this.multipleChoicePanel.Name = "multipleChoicePanel";
-            this.multipleChoicePanel.Size = new System.Drawing.Size(646, 180);
-            this.multipleChoicePanel.TabIndex = 5;
-            this.multipleChoicePanel.Visible = false;
-            // 
-            // optionsLabel
-            // 
-            this.optionsLabel.AutoSize = true;
-            this.optionsLabel.Depth = 0;
-            this.optionsLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.optionsLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.optionsLabel.Location = new System.Drawing.Point(0, 0);
-            this.optionsLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.optionsLabel.Name = "optionsLabel";
-            this.optionsLabel.Size = new System.Drawing.Size(55, 19);
-            this.optionsLabel.TabIndex = 0;
-            this.optionsLabel.Text = "Options";
-            // 
-            // option1TextBox
-            // 
-            this.option1TextBox.AnimateReadOnly = false;
-            this.option1TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.option1TextBox.Depth = 0;
-            this.option1TextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.option1TextBox.Hint = "Option 1";
-            this.option1TextBox.LeadingIcon = null;
-            this.option1TextBox.Location = new System.Drawing.Point(0, 25);
-            this.option1TextBox.MaxLength = 200;
-            this.option1TextBox.MouseState = MaterialSkin.MouseState.OUT;
-            this.option1TextBox.Multiline = false;
-            this.option1TextBox.Name = "option1TextBox";
-            this.option1TextBox.Size = new System.Drawing.Size(300, 50);
-            this.option1TextBox.TabIndex = 1;
-            this.option1TextBox.Text = "";
-            this.option1TextBox.TrailingIcon = null;
-            // 
-            // option2TextBox
-            // 
-            this.option2TextBox.AnimateReadOnly = false;
-            this.option2TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.option2TextBox.Depth = 0;
-            this.option2TextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.option2TextBox.Hint = "Option 2";
-            this.option2TextBox.LeadingIcon = null;
-            this.option2TextBox.Location = new System.Drawing.Point(320, 25);
-            this.option2TextBox.MaxLength = 200;
-            this.option2TextBox.MouseState = MaterialSkin.MouseState.OUT;
-            this.option2TextBox.Multiline = false;
-            this.option2TextBox.Name = "option2TextBox";
-            this.option2TextBox.Size = new System.Drawing.Size(300, 50);
-            this.option2TextBox.TabIndex = 2;
-            this.option2TextBox.Text = "";
-            this.option2TextBox.TrailingIcon = null;
-            // 
-            // option3TextBox
-            // 
-            this.option3TextBox.AnimateReadOnly = false;
-            this.option3TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.option3TextBox.Depth = 0;
-            this.option3TextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.option3TextBox.Hint = "Option 3";
-            this.option3TextBox.LeadingIcon = null;
-            this.option3TextBox.Location = new System.Drawing.Point(0, 85);
-            this.option3TextBox.MaxLength = 200;
-            this.option3TextBox.MouseState = MaterialSkin.MouseState.OUT;
-            this.option3TextBox.Multiline = false;
-            this.option3TextBox.Name = "option3TextBox";
-            this.option3TextBox.Size = new System.Drawing.Size(300, 50);
-            this.option3TextBox.TabIndex = 3;
-            this.option3TextBox.Text = "";
-            this.option3TextBox.TrailingIcon = null;
-            // 
-            // option4TextBox
-            // 
-            this.option4TextBox.AnimateReadOnly = false;
-            this.option4TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.option4TextBox.Depth = 0;
-            this.option4TextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.option4TextBox.Hint = "Option 4";
-            this.option4TextBox.LeadingIcon = null;
-            this.option4TextBox.Location = new System.Drawing.Point(320, 85);
-            this.option4TextBox.MaxLength = 200;
-            this.option4TextBox.MouseState = MaterialSkin.MouseState.OUT;
-            this.option4TextBox.Multiline = false;
-            this.option4TextBox.Name = "option4TextBox";
-            this.option4TextBox.Size = new System.Drawing.Size(300, 50);
-            this.option4TextBox.TabIndex = 4;
-            this.option4TextBox.Text = "";
-            this.option4TextBox.TrailingIcon = null;
-            // 
-            // correctAnswerLabel
-            // 
-            this.correctAnswerLabel.AutoSize = true;
-            this.correctAnswerLabel.Depth = 0;
-            this.correctAnswerLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.correctAnswerLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.correctAnswerLabel.Location = new System.Drawing.Point(0, 145);
-            this.correctAnswerLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.correctAnswerLabel.Name = "correctAnswerLabel";
-            this.correctAnswerLabel.Size = new System.Drawing.Size(105, 19);
-            this.correctAnswerLabel.TabIndex = 5;
-            this.correctAnswerLabel.Text = "Correct Answer";
-            // 
-            // correctAnswerComboBox
-            // 
-            this.correctAnswerComboBox.AutoResize = false;
-            this.correctAnswerComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.correctAnswerComboBox.Depth = 0;
-            this.correctAnswerComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.correctAnswerComboBox.DropDownHeight = 174;
-            this.correctAnswerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.correctAnswerComboBox.DropDownWidth = 121;
-            this.correctAnswerComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.correctAnswerComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.correctAnswerComboBox.FormattingEnabled = true;
-            this.correctAnswerComboBox.IntegralHeight = false;
-            this.correctAnswerComboBox.ItemHeight = 43;
-            this.correctAnswerComboBox.Location = new System.Drawing.Point(120, 140);
-            this.correctAnswerComboBox.MaxDropDownItems = 4;
-            this.correctAnswerComboBox.MouseState = MaterialSkin.MouseState.OUT;
-            this.correctAnswerComboBox.Name = "correctAnswerComboBox";
-            this.correctAnswerComboBox.Size = new System.Drawing.Size(180, 49);
-            this.correctAnswerComboBox.StartIndex = 0;
-            this.correctAnswerComboBox.TabIndex = 6;
-            // 
-            // openEndedPanel
-            // 
-            this.openEndedPanel.Controls.Add(this.alternativeAnswersTextBox);
-            this.openEndedPanel.Controls.Add(this.alternativeAnswersLabel);
-            this.openEndedPanel.Controls.Add(this.correctAnswerTextBox);
-            this.openEndedPanel.Controls.Add(this.correctAnswerTextLabel);
-            this.openEndedPanel.Location = new System.Drawing.Point(24, 280);
-            this.openEndedPanel.Name = "openEndedPanel";
-            this.openEndedPanel.Size = new System.Drawing.Size(646, 180);
-            this.openEndedPanel.TabIndex = 6;
-            this.openEndedPanel.Visible = false;
-            // 
-            // correctAnswerTextLabel
-            // 
-            this.correctAnswerTextLabel.AutoSize = true;
-            this.correctAnswerTextLabel.Depth = 0;
-            this.correctAnswerTextLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.correctAnswerTextLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.correctAnswerTextLabel.Location = new System.Drawing.Point(0, 0);
-            this.correctAnswerTextLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.correctAnswerTextLabel.Name = "correctAnswerTextLabel";
-            this.correctAnswerTextLabel.Size = new System.Drawing.Size(105, 19);
-            this.correctAnswerTextLabel.TabIndex = 0;
-            this.correctAnswerTextLabel.Text = "Correct Answer";
-            // 
-            // correctAnswerTextBox
-            // 
-            this.correctAnswerTextBox.AnimateReadOnly = false;
-            this.correctAnswerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.correctAnswerTextBox.Depth = 0;
-            this.correctAnswerTextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.correctAnswerTextBox.Hint = "Enter the correct answer (1-4 words)";
-            this.correctAnswerTextBox.LeadingIcon = null;
-            this.correctAnswerTextBox.Location = new System.Drawing.Point(0, 25);
-            this.correctAnswerTextBox.MaxLength = 200;
-            this.correctAnswerTextBox.MouseState = MaterialSkin.MouseState.OUT;
-            this.correctAnswerTextBox.Multiline = false;
-            this.correctAnswerTextBox.Name = "correctAnswerTextBox";
-            this.correctAnswerTextBox.Size = new System.Drawing.Size(620, 50);
-            this.correctAnswerTextBox.TabIndex = 1;
-            this.correctAnswerTextBox.Text = "";
-            this.correctAnswerTextBox.TrailingIcon = null;
-            // 
-            // alternativeAnswersLabel
-            // 
-            this.alternativeAnswersLabel.AutoSize = true;
-            this.alternativeAnswersLabel.Depth = 0;
-            this.alternativeAnswersLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.alternativeAnswersLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.alternativeAnswersLabel.Location = new System.Drawing.Point(0, 85);
-            this.alternativeAnswersLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.alternativeAnswersLabel.Name = "alternativeAnswersLabel";
-            this.alternativeAnswersLabel.Size = new System.Drawing.Size(139, 19);
-            this.alternativeAnswersLabel.TabIndex = 2;
-            this.alternativeAnswersLabel.Text = "Alternative Answers";
-            // 
-            // alternativeAnswersTextBox
-            // 
-            this.alternativeAnswersTextBox.AnimateReadOnly = false;
-            this.alternativeAnswersTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.alternativeAnswersTextBox.Depth = 0;
-            this.alternativeAnswersTextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.alternativeAnswersTextBox.Hint = "Enter alternative answers separated by commas (optional)";
-            this.alternativeAnswersTextBox.LeadingIcon = null;
-            this.alternativeAnswersTextBox.Location = new System.Drawing.Point(0, 110);
-            this.alternativeAnswersTextBox.MaxLength = 500;
-            this.alternativeAnswersTextBox.MouseState = MaterialSkin.MouseState.OUT;
-            this.alternativeAnswersTextBox.Multiline = false;
-            this.alternativeAnswersTextBox.Name = "alternativeAnswersTextBox";
-            this.alternativeAnswersTextBox.Size = new System.Drawing.Size(620, 50);
-            this.alternativeAnswersTextBox.TabIndex = 3;
-            this.alternativeAnswersTextBox.Text = "";
-            this.alternativeAnswersTextBox.TrailingIcon = null;
-            // 
-            // trueFalsePanel
-            // 
-            this.trueFalsePanel.Controls.Add(this.trueFalseComboBox);
-            this.trueFalsePanel.Controls.Add(this.trueFalseLabel);
-            this.trueFalsePanel.Location = new System.Drawing.Point(24, 280);
-            this.trueFalsePanel.Name = "trueFalsePanel";
-            this.trueFalsePanel.Size = new System.Drawing.Size(646, 180);
-            this.trueFalsePanel.TabIndex = 7;
-            this.trueFalsePanel.Visible = false;
-            // 
-            // trueFalseLabel
-            // 
-            this.trueFalseLabel.AutoSize = true;
-            this.trueFalseLabel.Depth = 0;
-            this.trueFalseLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.trueFalseLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.trueFalseLabel.Location = new System.Drawing.Point(0, 0);
-            this.trueFalseLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.trueFalseLabel.Name = "trueFalseLabel";
-            this.trueFalseLabel.Size = new System.Drawing.Size(105, 19);
-            this.trueFalseLabel.TabIndex = 0;
-            this.trueFalseLabel.Text = "Correct Answer";
-            // 
-            // trueFalseComboBox
-            // 
-            this.trueFalseComboBox.AutoResize = false;
-            this.trueFalseComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.trueFalseComboBox.Depth = 0;
-            this.trueFalseComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.trueFalseComboBox.DropDownHeight = 174;
-            this.trueFalseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.trueFalseComboBox.DropDownWidth = 121;
-            this.trueFalseComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.trueFalseComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.trueFalseComboBox.FormattingEnabled = true;
-            this.trueFalseComboBox.IntegralHeight = false;
-            this.trueFalseComboBox.ItemHeight = 43;
-            this.trueFalseComboBox.Location = new System.Drawing.Point(0, 25);
-            this.trueFalseComboBox.MaxDropDownItems = 4;
-            this.trueFalseComboBox.MouseState = MaterialSkin.MouseState.OUT;
-            this.trueFalseComboBox.Name = "trueFalseComboBox";
-            this.trueFalseComboBox.Size = new System.Drawing.Size(200, 49);
-            this.trueFalseComboBox.StartIndex = 0;
-            this.trueFalseComboBox.TabIndex = 1;
-            // 
-            // saveButton
-            // 
-            this.saveButton.AutoSize = false;
-            this.saveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.saveButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.saveButton.Depth = 0;
-            this.saveButton.HighEmphasis = true;
-            this.saveButton.Icon = null;
-            this.saveButton.Location = new System.Drawing.Point(470, 480);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.saveButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.saveButton.Name = "saveButton";
-            this.saveButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.saveButton.Size = new System.Drawing.Size(100, 36);
-            this.saveButton.TabIndex = 8;
-            this.saveButton.Text = "SAVE";
-            this.saveButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.saveButton.UseAccentColor = false;
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            mainPanel.Controls.Add(cancelButton);
+            mainPanel.Controls.Add(saveButton);
+            mainPanel.Controls.Add(trueFalsePanel);
+            mainPanel.Controls.Add(openEndedPanel);
+            mainPanel.Controls.Add(multipleChoicePanel);
+            mainPanel.Controls.Add(questionTextBox);
+            mainPanel.Controls.Add(questionTextLabel);
+            mainPanel.Controls.Add(questionTypeComboBox);
+            mainPanel.Controls.Add(questionTypeLabel);
+            mainPanel.Controls.Add(titleLabel);
+            mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainPanel.Location = new System.Drawing.Point(4, 74);
+            mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Padding = new System.Windows.Forms.Padding(28, 28, 28, 28);
+            mainPanel.Size = new System.Drawing.Size(1042, 788);
+            mainPanel.TabIndex = 0;
             // 
             // cancelButton
             // 
-            this.cancelButton.AutoSize = false;
-            this.cancelButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.cancelButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.cancelButton.Depth = 0;
-            this.cancelButton.HighEmphasis = false;
-            this.cancelButton.Icon = null;
-            this.cancelButton.Location = new System.Drawing.Point(580, 480);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.cancelButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.cancelButton.Size = new System.Drawing.Size(90, 36);
-            this.cancelButton.TabIndex = 9;
-            this.cancelButton.Text = "CANCEL";
-            this.cancelButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
-            this.cancelButton.UseAccentColor = false;
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            cancelButton.AutoSize = false;
+            cancelButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            cancelButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            cancelButton.Depth = 0;
+            cancelButton.HighEmphasis = false;
+            cancelButton.Icon = null;
+            cancelButton.Location = new System.Drawing.Point(677, 554);
+            cancelButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            cancelButton.MouseState = MaterialSkin.MouseState.HOVER;
+            cancelButton.Name = "cancelButton";
+            cancelButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            cancelButton.Size = new System.Drawing.Size(105, 42);
+            cancelButton.TabIndex = 9;
+            cancelButton.Text = "CANCEL";
+            cancelButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            cancelButton.UseAccentColor = false;
+            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += cancelButton_Click;
+            // 
+            // saveButton
+            // 
+            saveButton.AutoSize = false;
+            saveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            saveButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            saveButton.Depth = 0;
+            saveButton.HighEmphasis = true;
+            saveButton.Icon = null;
+            saveButton.Location = new System.Drawing.Point(548, 554);
+            saveButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            saveButton.MouseState = MaterialSkin.MouseState.HOVER;
+            saveButton.Name = "saveButton";
+            saveButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            saveButton.Size = new System.Drawing.Size(117, 42);
+            saveButton.TabIndex = 8;
+            saveButton.Text = "SAVE";
+            saveButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            saveButton.UseAccentColor = false;
+            saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
+            // 
+            // trueFalsePanel
+            // 
+            trueFalsePanel.Controls.Add(trueFalseComboBox);
+            trueFalsePanel.Controls.Add(trueFalseLabel);
+            trueFalsePanel.Location = new System.Drawing.Point(28, 323);
+            trueFalsePanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            trueFalsePanel.Name = "trueFalsePanel";
+            trueFalsePanel.Size = new System.Drawing.Size(754, 208);
+            trueFalsePanel.TabIndex = 7;
+            trueFalsePanel.Visible = false;
+            // 
+            // trueFalseComboBox
+            // 
+            trueFalseComboBox.AutoResize = false;
+            trueFalseComboBox.BackColor = System.Drawing.Color.FromArgb(((int)((byte)255)), ((int)((byte)255)), ((int)((byte)255)));
+            trueFalseComboBox.Depth = 0;
+            trueFalseComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            trueFalseComboBox.DropDownHeight = 174;
+            trueFalseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            trueFalseComboBox.DropDownWidth = 121;
+            trueFalseComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            trueFalseComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)222)), ((int)((byte)0)), ((int)((byte)0)), ((int)((byte)0)));
+            trueFalseComboBox.FormattingEnabled = true;
+            trueFalseComboBox.IntegralHeight = false;
+            trueFalseComboBox.ItemHeight = 43;
+            trueFalseComboBox.Location = new System.Drawing.Point(0, 29);
+            trueFalseComboBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            trueFalseComboBox.MaxDropDownItems = 4;
+            trueFalseComboBox.MouseState = MaterialSkin.MouseState.OUT;
+            trueFalseComboBox.Name = "trueFalseComboBox";
+            trueFalseComboBox.Size = new System.Drawing.Size(233, 49);
+            trueFalseComboBox.StartIndex = 0;
+            trueFalseComboBox.TabIndex = 1;
+            trueFalseComboBox.SelectedIndexChanged += trueFalseComboBox_SelectedIndexChanged;
+            // 
+            // trueFalseLabel
+            // 
+            trueFalseLabel.AutoSize = true;
+            trueFalseLabel.Depth = 0;
+            trueFalseLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            trueFalseLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            trueFalseLabel.Location = new System.Drawing.Point(0, 0);
+            trueFalseLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            trueFalseLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            trueFalseLabel.Name = "trueFalseLabel";
+            trueFalseLabel.Size = new System.Drawing.Size(107, 19);
+            trueFalseLabel.TabIndex = 0;
+            trueFalseLabel.Text = "Correct Answer";
+            // 
+            // openEndedPanel
+            // 
+            openEndedPanel.Controls.Add(alternativeAnswersTextBox);
+            openEndedPanel.Controls.Add(alternativeAnswersLabel);
+            openEndedPanel.Controls.Add(correctAnswerTextBox);
+            openEndedPanel.Controls.Add(correctAnswerTextLabel);
+            openEndedPanel.Location = new System.Drawing.Point(28, 323);
+            openEndedPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            openEndedPanel.Name = "openEndedPanel";
+            openEndedPanel.Size = new System.Drawing.Size(754, 208);
+            openEndedPanel.TabIndex = 6;
+            openEndedPanel.Visible = false;
+            // 
+            // alternativeAnswersTextBox
+            // 
+            alternativeAnswersTextBox.AnimateReadOnly = false;
+            alternativeAnswersTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            alternativeAnswersTextBox.Depth = 0;
+            alternativeAnswersTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            alternativeAnswersTextBox.Hint = "Enter alternative answers separated by commas (optional)";
+            alternativeAnswersTextBox.LeadingIcon = null;
+            alternativeAnswersTextBox.Location = new System.Drawing.Point(0, 127);
+            alternativeAnswersTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            alternativeAnswersTextBox.MaxLength = 500;
+            alternativeAnswersTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            alternativeAnswersTextBox.Multiline = false;
+            alternativeAnswersTextBox.Name = "alternativeAnswersTextBox";
+            alternativeAnswersTextBox.Size = new System.Drawing.Size(723, 50);
+            alternativeAnswersTextBox.TabIndex = 3;
+            alternativeAnswersTextBox.Text = "";
+            alternativeAnswersTextBox.TrailingIcon = null;
+            // 
+            // alternativeAnswersLabel
+            // 
+            alternativeAnswersLabel.AutoSize = true;
+            alternativeAnswersLabel.Depth = 0;
+            alternativeAnswersLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            alternativeAnswersLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            alternativeAnswersLabel.Location = new System.Drawing.Point(0, 98);
+            alternativeAnswersLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            alternativeAnswersLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            alternativeAnswersLabel.Name = "alternativeAnswersLabel";
+            alternativeAnswersLabel.Size = new System.Drawing.Size(140, 19);
+            alternativeAnswersLabel.TabIndex = 2;
+            alternativeAnswersLabel.Text = "Alternative Answers";
+            // 
+            // correctAnswerTextBox
+            // 
+            correctAnswerTextBox.AnimateReadOnly = false;
+            correctAnswerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            correctAnswerTextBox.Depth = 0;
+            correctAnswerTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            correctAnswerTextBox.Hint = "Enter the correct answer (1-4 words)";
+            correctAnswerTextBox.LeadingIcon = null;
+            correctAnswerTextBox.Location = new System.Drawing.Point(0, 29);
+            correctAnswerTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            correctAnswerTextBox.MaxLength = 200;
+            correctAnswerTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            correctAnswerTextBox.Multiline = false;
+            correctAnswerTextBox.Name = "correctAnswerTextBox";
+            correctAnswerTextBox.Size = new System.Drawing.Size(723, 50);
+            correctAnswerTextBox.TabIndex = 1;
+            correctAnswerTextBox.Text = "";
+            correctAnswerTextBox.TrailingIcon = null;
+            // 
+            // correctAnswerTextLabel
+            // 
+            correctAnswerTextLabel.AutoSize = true;
+            correctAnswerTextLabel.Depth = 0;
+            correctAnswerTextLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            correctAnswerTextLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            correctAnswerTextLabel.Location = new System.Drawing.Point(0, 0);
+            correctAnswerTextLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            correctAnswerTextLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            correctAnswerTextLabel.Name = "correctAnswerTextLabel";
+            correctAnswerTextLabel.Size = new System.Drawing.Size(107, 19);
+            correctAnswerTextLabel.TabIndex = 0;
+            correctAnswerTextLabel.Text = "Correct Answer";
+            // 
+            // multipleChoicePanel
+            // 
+            multipleChoicePanel.Controls.Add(correctAnswerComboBox);
+            multipleChoicePanel.Controls.Add(correctAnswerLabel);
+            multipleChoicePanel.Controls.Add(option4TextBox);
+            multipleChoicePanel.Controls.Add(option3TextBox);
+            multipleChoicePanel.Controls.Add(option2TextBox);
+            multipleChoicePanel.Controls.Add(option1TextBox);
+            multipleChoicePanel.Controls.Add(optionsLabel);
+            multipleChoicePanel.Location = new System.Drawing.Point(28, 323);
+            multipleChoicePanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            multipleChoicePanel.Name = "multipleChoicePanel";
+            multipleChoicePanel.Size = new System.Drawing.Size(754, 208);
+            multipleChoicePanel.TabIndex = 5;
+            multipleChoicePanel.Visible = false;
+            // 
+            // correctAnswerComboBox
+            // 
+            correctAnswerComboBox.AutoResize = false;
+            correctAnswerComboBox.BackColor = System.Drawing.Color.FromArgb(((int)((byte)255)), ((int)((byte)255)), ((int)((byte)255)));
+            correctAnswerComboBox.Depth = 0;
+            correctAnswerComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            correctAnswerComboBox.DropDownHeight = 174;
+            correctAnswerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            correctAnswerComboBox.DropDownWidth = 121;
+            correctAnswerComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            correctAnswerComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)222)), ((int)((byte)0)), ((int)((byte)0)), ((int)((byte)0)));
+            correctAnswerComboBox.FormattingEnabled = true;
+            correctAnswerComboBox.IntegralHeight = false;
+            correctAnswerComboBox.ItemHeight = 43;
+            correctAnswerComboBox.Location = new System.Drawing.Point(140, 162);
+            correctAnswerComboBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            correctAnswerComboBox.MaxDropDownItems = 4;
+            correctAnswerComboBox.MouseState = MaterialSkin.MouseState.OUT;
+            correctAnswerComboBox.Name = "correctAnswerComboBox";
+            correctAnswerComboBox.Size = new System.Drawing.Size(209, 49);
+            correctAnswerComboBox.StartIndex = 0;
+            correctAnswerComboBox.TabIndex = 6;
+            // 
+            // correctAnswerLabel
+            // 
+            correctAnswerLabel.AutoSize = true;
+            correctAnswerLabel.Depth = 0;
+            correctAnswerLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            correctAnswerLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            correctAnswerLabel.Location = new System.Drawing.Point(0, 167);
+            correctAnswerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            correctAnswerLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            correctAnswerLabel.Name = "correctAnswerLabel";
+            correctAnswerLabel.Size = new System.Drawing.Size(107, 19);
+            correctAnswerLabel.TabIndex = 5;
+            correctAnswerLabel.Text = "Correct Answer";
+            // 
+            // option4TextBox
+            // 
+            option4TextBox.AnimateReadOnly = false;
+            option4TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            option4TextBox.Depth = 0;
+            option4TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            option4TextBox.Hint = "Option 4";
+            option4TextBox.LeadingIcon = null;
+            option4TextBox.Location = new System.Drawing.Point(373, 98);
+            option4TextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            option4TextBox.MaxLength = 200;
+            option4TextBox.MouseState = MaterialSkin.MouseState.OUT;
+            option4TextBox.Multiline = false;
+            option4TextBox.Name = "option4TextBox";
+            option4TextBox.Size = new System.Drawing.Size(350, 50);
+            option4TextBox.TabIndex = 4;
+            option4TextBox.Text = "";
+            option4TextBox.TrailingIcon = null;
+            // 
+            // option3TextBox
+            // 
+            option3TextBox.AnimateReadOnly = false;
+            option3TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            option3TextBox.Depth = 0;
+            option3TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            option3TextBox.Hint = "Option 3";
+            option3TextBox.LeadingIcon = null;
+            option3TextBox.Location = new System.Drawing.Point(0, 98);
+            option3TextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            option3TextBox.MaxLength = 200;
+            option3TextBox.MouseState = MaterialSkin.MouseState.OUT;
+            option3TextBox.Multiline = false;
+            option3TextBox.Name = "option3TextBox";
+            option3TextBox.Size = new System.Drawing.Size(350, 50);
+            option3TextBox.TabIndex = 3;
+            option3TextBox.Text = "";
+            option3TextBox.TrailingIcon = null;
+            // 
+            // option2TextBox
+            // 
+            option2TextBox.AnimateReadOnly = false;
+            option2TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            option2TextBox.Depth = 0;
+            option2TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            option2TextBox.Hint = "Option 2";
+            option2TextBox.LeadingIcon = null;
+            option2TextBox.Location = new System.Drawing.Point(373, 29);
+            option2TextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            option2TextBox.MaxLength = 200;
+            option2TextBox.MouseState = MaterialSkin.MouseState.OUT;
+            option2TextBox.Multiline = false;
+            option2TextBox.Name = "option2TextBox";
+            option2TextBox.Size = new System.Drawing.Size(350, 50);
+            option2TextBox.TabIndex = 2;
+            option2TextBox.Text = "";
+            option2TextBox.TrailingIcon = null;
+            // 
+            // option1TextBox
+            // 
+            option1TextBox.AnimateReadOnly = false;
+            option1TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            option1TextBox.Depth = 0;
+            option1TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            option1TextBox.Hint = "Option 1";
+            option1TextBox.LeadingIcon = null;
+            option1TextBox.Location = new System.Drawing.Point(0, 29);
+            option1TextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            option1TextBox.MaxLength = 200;
+            option1TextBox.MouseState = MaterialSkin.MouseState.OUT;
+            option1TextBox.Multiline = false;
+            option1TextBox.Name = "option1TextBox";
+            option1TextBox.Size = new System.Drawing.Size(350, 50);
+            option1TextBox.TabIndex = 1;
+            option1TextBox.Text = "";
+            option1TextBox.TrailingIcon = null;
+            // 
+            // optionsLabel
+            // 
+            optionsLabel.AutoSize = true;
+            optionsLabel.Depth = 0;
+            optionsLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            optionsLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            optionsLabel.Location = new System.Drawing.Point(0, 0);
+            optionsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            optionsLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            optionsLabel.Name = "optionsLabel";
+            optionsLabel.Size = new System.Drawing.Size(56, 19);
+            optionsLabel.TabIndex = 0;
+            optionsLabel.Text = "Options";
+            // 
+            // questionTextBox
+            // 
+            questionTextBox.AnimateReadOnly = false;
+            questionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            questionTextBox.Depth = 0;
+            questionTextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            questionTextBox.Hint = "Enter your question here...";
+            questionTextBox.LeadingIcon = null;
+            questionTextBox.Location = new System.Drawing.Point(28, 213);
+            questionTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            questionTextBox.MaxLength = 500;
+            questionTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            questionTextBox.Name = "questionTextBox";
+            questionTextBox.Size = new System.Drawing.Size(754, 50);
+            questionTextBox.TabIndex = 4;
+            questionTextBox.Text = "";
+            questionTextBox.TrailingIcon = null;
+            // 
+            // questionTextLabel
+            // 
+            questionTextLabel.AutoSize = true;
+            questionTextLabel.Depth = 0;
+            questionTextLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            questionTextLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            questionTextLabel.Location = new System.Drawing.Point(28, 185);
+            questionTextLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            questionTextLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            questionTextLabel.Name = "questionTextLabel";
+            questionTextLabel.Size = new System.Drawing.Size(99, 19);
+            questionTextLabel.TabIndex = 3;
+            questionTextLabel.Text = "Question Text";
+            // 
+            // questionTypeComboBox
+            // 
+            questionTypeComboBox.AutoResize = false;
+            questionTypeComboBox.BackColor = System.Drawing.Color.FromArgb(((int)((byte)255)), ((int)((byte)255)), ((int)((byte)255)));
+            questionTypeComboBox.Depth = 0;
+            questionTypeComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            questionTypeComboBox.DropDownHeight = 174;
+            questionTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            questionTypeComboBox.DropDownWidth = 121;
+            questionTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            questionTypeComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)222)), ((int)((byte)0)), ((int)((byte)0)), ((int)((byte)0)));
+            questionTypeComboBox.FormattingEnabled = true;
+            questionTypeComboBox.IntegralHeight = false;
+            questionTypeComboBox.ItemHeight = 43;
+            questionTypeComboBox.Location = new System.Drawing.Point(28, 110);
+            questionTypeComboBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            questionTypeComboBox.MaxDropDownItems = 4;
+            questionTypeComboBox.MouseState = MaterialSkin.MouseState.OUT;
+            questionTypeComboBox.Name = "questionTypeComboBox";
+            questionTypeComboBox.Size = new System.Drawing.Size(349, 49);
+            questionTypeComboBox.StartIndex = 0;
+            questionTypeComboBox.TabIndex = 2;
+            questionTypeComboBox.SelectedIndexChanged += questionTypeComboBox_SelectedIndexChanged;
+            // 
+            // questionTypeLabel
+            // 
+            questionTypeLabel.AutoSize = true;
+            questionTypeLabel.Depth = 0;
+            questionTypeLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            questionTypeLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            questionTypeLabel.Location = new System.Drawing.Point(28, 81);
+            questionTypeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            questionTypeLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            questionTypeLabel.Name = "questionTypeLabel";
+            questionTypeLabel.Size = new System.Drawing.Size(103, 19);
+            questionTypeLabel.TabIndex = 1;
+            questionTypeLabel.Text = "Question Type";
+            // 
+            // titleLabel
+            // 
+            titleLabel.AutoSize = true;
+            titleLabel.Depth = 0;
+            titleLabel.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            titleLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            titleLabel.Location = new System.Drawing.Point(28, 28);
+            titleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            titleLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            titleLabel.Name = "titleLabel";
+            titleLabel.Size = new System.Drawing.Size(145, 29);
+            titleLabel.TabIndex = 0;
+            titleLabel.Text = "Edit Question";
             // 
             // QuestionEditForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 750);
-            this.Controls.Add(this.mainPanel);
-            this.Name = "QuestionEditForm";
-            this.Text = "Edit Question";
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            this.multipleChoicePanel.ResumeLayout(false);
-            this.multipleChoicePanel.PerformLayout();
-            this.openEndedPanel.ResumeLayout(false);
-            this.openEndedPanel.PerformLayout();
-            this.trueFalsePanel.ResumeLayout(false);
-            this.trueFalsePanel.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1050, 865);
+            Controls.Add(mainPanel);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Padding = new System.Windows.Forms.Padding(4, 74, 4, 3);
+            Text = "Edit Question";
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
+            trueFalsePanel.ResumeLayout(false);
+            trueFalsePanel.PerformLayout();
+            openEndedPanel.ResumeLayout(false);
+            openEndedPanel.PerformLayout();
+            multipleChoicePanel.ResumeLayout(false);
+            multipleChoicePanel.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

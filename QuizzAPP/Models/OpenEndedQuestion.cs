@@ -4,47 +4,32 @@ using System.Linq;
 
 namespace QuizzAPP.Models
 {
-    /// <summary>
-    /// Open-ended question implementation - demonstrates Inheritance
-    /// Supports alternative correct answers (e.g., "United Kingdom" and "UK")
-    /// </summary>
+    // Câu hỏi tự luận - hỗ trợ nhiều đáp án đúng (VD: "United Kingdom" và "UK")
     public class OpenEndedQuestion : Question
     {
         private List<string> _alternativeAnswers = new List<string>();
 
-        /// <summary>
-        /// List of alternative correct answers - demonstrates Encapsulation
-        /// </summary>
+        // Danh sách các đáp án đúng khác
         public List<string> AlternativeAnswers
         {
-            get => _alternativeAnswers;
-            set => _alternativeAnswers = value ?? new List<string>();
+            get { return _alternativeAnswers; }
+            set { _alternativeAnswers = value ?? new List<string>(); }
         }
 
-        /// <summary>
-        /// Question type identifier
-        /// </summary>
-        public override string QuestionType => "Open Ended";
+        // Loại câu hỏi
+        public override string QuestionType
+        {
+            get { return "Open Ended"; }
+        }
 
-        /// <summary>
-        /// Constructor for Open Ended Question
-        /// </summary>
-        /// <param name="id">Unique identifier</param>
-        /// <param name="questionText">The question text</param>
-        /// <param name="correctAnswer">The primary correct answer</param>
-        /// <param name="alternativeAnswers">Optional list of alternative correct answers</param>
+        // Constructor
         public OpenEndedQuestion(int id, string questionText, string correctAnswer, List<string>? alternativeAnswers = null)
             : base(id, questionText, correctAnswer)
         {
             AlternativeAnswers = alternativeAnswers ?? new List<string>();
         }
 
-        /// <summary>
-        /// Check if the provided answer is correct - implements abstract method
-        /// Supports multiple correct answer variations
-        /// </summary>
-        /// <param name="userAnswer">The user's answer</param>
-        /// <returns>True if correct, false otherwise</returns>
+        // Kiểm tra đáp án đúng - hỗ trợ nhiều biến thể đáp án
         public override bool IsAnswerCorrect(string userAnswer)
         {
             if (string.IsNullOrWhiteSpace(userAnswer))
@@ -58,7 +43,10 @@ namespace QuizzAPP.Models
                 return true;
 
             // Check alternative answers
-            return AlternativeAnswers.Any(alt => NormalizeAnswer(alt) == normalizedUserAnswer);
+            return AlternativeAnswers.Any(alt =>
+            {
+                return NormalizeAnswer(alt) == normalizedUserAnswer;
+            });
         }
 
         /// <summary>
@@ -80,15 +68,34 @@ namespace QuizzAPP.Models
 
 
 
-        /// <summary>
-        /// Get formatted display text
-        /// </summary>
-        /// <returns>Question text with instruction</returns>
+        // Hiển thị câu hỏi với hướng dẫn
         public override string GetDisplayText()
         {
             return base.GetDisplayText() + "\n(Enter your answer - 1 to 4 words)";
         }
-
-
     }
 }
+
+/*
+ * GIẢI THÍCH VỀ LỚP OPENENDEDQUESTION:
+ *
+ * 1. KẾ THỪA (Inheritance):
+ *    - Kế thừa từ lớp Question
+ *    - Sử dụng constructor của lớp cha
+ *    - Override abstract method IsAnswerCorrect()
+ *
+ * 2. TÍNH NĂNG ĐẶC BIỆT:
+ *    - Hỗ trợ nhiều đáp án đúng (AlternativeAnswers)
+ *    - VD: "United Kingdom", "UK", "Britain" đều đúng
+ *    - Normalize answer để so sánh (bỏ dấu, viết thường, trim)
+ *
+ * 3. VALIDATION & NORMALIZATION:
+ *    - NormalizeAnswer() chuẩn hóa text trước khi so sánh
+ *    - Bỏ khoảng trắng thừa, dấu chấm, dấu phẩy
+ *    - Chuyển về chữ thường để so sánh không phân biệt hoa thường
+ *
+ * 4. USER EXPERIENCE:
+ *    - GetDisplayText() thêm hướng dẫn "(Enter your answer - 1 to 4 words)"
+ *    - Linh hoạt trong việc nhận đáp án từ người dùng
+ *    - Kiểm tra cả đáp án chính và các đáp án thay thế
+ */

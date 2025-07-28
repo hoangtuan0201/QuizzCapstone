@@ -5,63 +5,60 @@ using QuizzAPP.Models;
 
 namespace QuizzAPP.Managers
 {
-    /// <summary>
-    /// Calculates and manages quiz scores - demonstrates Abstraction and Encapsulation
-    /// </summary>
+    // Tính toán và quản lý điểm số quiz
     public class ScoreCalculator
     {
         private List<QuestionResult> _results;
 
-        /// <summary>
-        /// Read-only access to question results
-        /// </summary>
-        public IReadOnlyList<QuestionResult> Results => _results.AsReadOnly();
+        // Danh sách kết quả câu hỏi (chỉ đọc)
+        public IReadOnlyList<QuestionResult> Results
+        {
+            get { return _results.AsReadOnly(); }
+        }
 
-        /// <summary>
-        /// Total number of questions answered
-        /// </summary>
-        public int TotalQuestions => _results.Count;
+        // Tổng số câu hỏi đã trả lời
+        public int TotalQuestions
+        {
+            get { return _results.Count; }
+        }
 
-        /// <summary>
-        /// Number of correct answers
-        /// </summary>
-        public int CorrectAnswers => _results.Count(r => r.IsCorrect);
+        // Số câu trả lời đúng
+        public int CorrectAnswers
+        {
+            get { return _results.Count(r => { return r.IsCorrect; }); }
+        }
 
-        /// <summary>
-        /// Number of incorrect answers
-        /// </summary>
-        public int IncorrectAnswers => _results.Count(r => !r.IsCorrect);
+        // Số câu trả lời sai
+        public int IncorrectAnswers
+        {
+            get { return _results.Count(r => { return !r.IsCorrect; }); }
+        }
 
-        /// <summary>
-        /// Score as percentage (0-100)
-        /// </summary>
-        public double ScorePercentage => TotalQuestions > 0 ? (double)CorrectAnswers / TotalQuestions * 100 : 0;
+        // Điểm số theo phần trăm (0-100)
+        public double ScorePercentage
+        {
+            get { return TotalQuestions > 0 ? (double)CorrectAnswers / TotalQuestions * 100 : 0; }
+        }
 
-        /// <summary>
-        /// Score as fraction (e.g., "8/10")
-        /// </summary>
-        public string ScoreFraction => $"{CorrectAnswers}/{TotalQuestions}";
+        // Điểm số dạng phân số (VD: "8/10")
+        public string ScoreFraction
+        {
+            get { return $"{CorrectAnswers}/{TotalQuestions}"; }
+        }
 
-        /// <summary>
-        /// Letter grade based on percentage
-        /// </summary>
-        public string LetterGrade => GetLetterGrade(ScorePercentage);
+        // Xếp loại theo chữ cái
+        public string LetterGrade
+        {
+            get { return GetLetterGrade(ScorePercentage); }
+        }
 
-        /// <summary>
-        /// Constructor initializes empty results
-        /// </summary>
+        // Constructor
         public ScoreCalculator()
         {
             _results = new List<QuestionResult>();
         }
 
-        /// <summary>
-        /// Record the result of answering a question
-        /// </summary>
-        /// <param name="question">The question that was answered</param>
-        /// <param name="userAnswer">The user's answer</param>
-        /// <param name="isCorrect">Whether the answer was correct</param>
-        /// <param name="timeSpent">Time spent on this question</param>
+        // Ghi lại kết quả trả lời câu hỏi
         public void RecordAnswer(Question question, string userAnswer, bool isCorrect, TimeSpan timeSpent)
         {
             if (question == null)
@@ -79,28 +76,22 @@ namespace QuizzAPP.Managers
             _results.Add(result);
         }
 
-        /// <summary>
-        /// Clear all recorded results
-        /// </summary>
+        // Xóa tất cả kết quả đã ghi
         public void Reset()
         {
             _results.Clear();
         }
 
-        /// <summary>
-        /// Get results for a specific question type
-        /// </summary>
-        /// <param name="questionType">Type of questions to filter by</param>
-        /// <returns>Results for the specified question type</returns>
+        // Lấy kết quả theo loại câu hỏi
         public List<QuestionResult> GetResultsByType(string questionType)
         {
-            return _results.Where(r => r.Question.QuestionType.Equals(questionType, StringComparison.OrdinalIgnoreCase)).ToList();
+            return _results.Where(r =>
+            {
+                return r.Question.QuestionType.Equals(questionType, StringComparison.OrdinalIgnoreCase);
+            }).ToList();
         }
 
-        /// <summary>
-        /// Get detailed score breakdown by question type
-        /// </summary>
-        /// <returns>Score breakdown</returns>
+        // Lấy phân tích điểm chi tiết theo loại câu hỏi
         public ScoreBreakdown GetScoreBreakdown()
         {
             var breakdown = new ScoreBreakdown();
@@ -111,19 +102,19 @@ namespace QuizzAPP.Managers
 
             breakdown.MultipleChoice = new TypeScore
             {
-                Correct = multipleChoiceResults.Count(r => r.IsCorrect),
+                Correct = multipleChoiceResults.Count(r => { return r.IsCorrect; }),
                 Total = multipleChoiceResults.Count
             };
 
             breakdown.OpenEnded = new TypeScore
             {
-                Correct = openEndedResults.Count(r => r.IsCorrect),
+                Correct = openEndedResults.Count(r => { return r.IsCorrect; }),
                 Total = openEndedResults.Count
             };
 
             breakdown.TrueFalse = new TypeScore
             {
-                Correct = trueFalseResults.Count(r => r.IsCorrect),
+                Correct = trueFalseResults.Count(r => { return r.IsCorrect; }),
                 Total = trueFalseResults.Count
             };
 
@@ -136,31 +127,36 @@ namespace QuizzAPP.Managers
             return breakdown;
         }
 
+        
 
 
-
-
-        /// <summary>
-        /// Convert percentage to letter grade
-        /// </summary>
-        /// <param name="percentage">Score percentage</param>
-        /// <returns>Letter grade</returns>
+        // Chuyển đổi phần trăm thành xếp loại chữ cái
         private string GetLetterGrade(double percentage)
         {
-            return percentage switch
+            if (percentage >= 90)
             {
-                >= 90 => "A",
-                >= 80 => "B",
-                >= 70 => "C",
-                >= 60 => "D",
-                _ => "F"
-            };
+                return "A";
+            }
+            else if (percentage >= 80)
+            {
+                return "B";
+            }
+            else if (percentage >= 70)
+            {
+                return "C";
+            }
+            else if (percentage >= 60)
+            {
+                return "D";
+            }
+            else
+            {
+                return "F";
+            }
         }
     }
 
-    /// <summary>
-    /// Represents the result of answering a single question
-    /// </summary>
+    // Kết quả trả lời một câu hỏi
     public class QuestionResult
     {
         public Question Question { get; set; } = null!;
@@ -170,9 +166,7 @@ namespace QuizzAPP.Managers
         public DateTime AnsweredAt { get; set; }
     }
 
-    /// <summary>
-    /// Score breakdown by question type
-    /// </summary>
+    // Phân tích điểm theo loại câu hỏi
     public class ScoreBreakdown
     {
         public TypeScore MultipleChoice { get; set; } = new();
@@ -181,14 +175,48 @@ namespace QuizzAPP.Managers
         public TypeScore Overall { get; set; } = new();
     }
 
-    /// <summary>
-    /// Score for a specific question type
-    /// </summary>
+    // Điểm số cho một loại câu hỏi cụ thể
     public class TypeScore
     {
         public int Correct { get; set; }
         public int Total { get; set; }
-        public double Percentage => Total > 0 ? (double)Correct / Total * 100 : 0;
-        public string Fraction => $"{Correct}/{Total}";
+        public double Percentage
+        {
+            get { return Total > 0 ? (double)Correct / Total * 100 : 0; }
+        }
+        public string Fraction
+        {
+            get { return $"{Correct}/{Total}"; }
+        }
     }
 }
+
+/*
+ * GIẢI THÍCH VỀ LỚP SCORECALCULATOR:
+ *
+ * 1. TÍNH TOÁN ĐIỂM SỐ (Score Calculation):
+ *    - Tự động tính điểm theo phần trăm và phân số
+ *    - Xếp loại theo thang điểm A, B, C, D, F
+ *    - Theo dõi số câu đúng/sai real-time
+ *
+ * 2. QUẢN LÝ KẾT QUẢ (Result Management):
+ *    - Lưu trữ kết quả từng câu hỏi trong List<QuestionResult>
+ *    - Ghi lại thời gian trả lời, đáp án user, đáp án đúng
+ *    - Cung cấp IReadOnlyList để bảo vệ dữ liệu
+ *
+ * 3. PHÂN TÍCH CHI TIẾT (Detailed Analysis):
+ *    - GetScoreBreakdown(): Phân tích theo loại câu hỏi
+ *    - GetResultsByType(): Lọc kết quả theo loại
+ *    - TypeScore class: Tính điểm riêng cho từng loại
+ *
+ * 4. HELPER CLASSES:
+ *    - QuestionResult: Lưu kết quả 1 câu hỏi
+ *    - ScoreBreakdown: Tổng hợp điểm theo loại
+ *    - TypeScore: Điểm số + phần trăm + phân số
+ *
+ * 5. TÍNH NĂNG CHÍNH:
+ *    - RecordAnswer(): Ghi lại kết quả trả lời
+ *    - Reset(): Xóa tất cả kết quả để bắt đầu lại
+ *    - Properties tự động tính toán: ScorePercentage, LetterGrade
+ *    - Hỗ trợ multiple question types với logic riêng biệt
+ */

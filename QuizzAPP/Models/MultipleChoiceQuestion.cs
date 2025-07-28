@@ -4,20 +4,16 @@ using System.Linq;
 
 namespace QuizzAPP.Models
 {
-    /// <summary>
-    /// Multiple choice question implementation - demonstrates Inheritance
-    /// </summary>
+    // Câu hỏi trắc nghiệm với 4 lựa chọn - kế thừa từ Question
     public class MultipleChoiceQuestion : Question
     {
         private List<string> _options = new List<string>();
         private int _correctOptionIndex;
 
-        /// <summary>
-        /// List of answer options (4 options required)
-        /// </summary>
+        // Danh sách 4 lựa chọn
         public List<string> Options
         {
-            get => _options;
+            get { return _options; }
             set
             {
                 if (value == null || value.Count != 4)
@@ -26,12 +22,10 @@ namespace QuizzAPP.Models
             }
         }
 
-        /// <summary>
-        /// Index of the correct option (0-3)
-        /// </summary>
+        // Chỉ số đáp án đúng (0-3)
         public int CorrectOptionIndex
         {
-            get => _correctOptionIndex;
+            get { return _correctOptionIndex; }
             set
             {
                 if (value < 0 || value > 3)
@@ -40,18 +34,13 @@ namespace QuizzAPP.Models
             }
         }
 
-        /// <summary>
-        /// Question type identifier
-        /// </summary>
-        public override string QuestionType => "Multiple Choice";
+        // Loại câu hỏi
+        public override string QuestionType
+        {
+            get { return "Multiple Choice"; }
+        }
 
-        /// <summary>
-        /// Constructor for Multiple Choice Question
-        /// </summary>
-        /// <param name="id">Unique identifier</param>
-        /// <param name="questionText">The question text</param>
-        /// <param name="options">List of 4 answer options</param>
-        /// <param name="correctOptionIndex">Index of correct option (0-3)</param>
+        // Constructor
         public MultipleChoiceQuestion(int id, string questionText, List<string> options, int correctOptionIndex)
             : base(id, questionText, "")
         {
@@ -61,11 +50,7 @@ namespace QuizzAPP.Models
             CorrectAnswer = options[correctOptionIndex];
         }
 
-        /// <summary>
-        /// Check if the provided answer is correct - implements abstract method
-        /// </summary>
-        /// <param name="userAnswer">The user's selected option (as string or index)</param>
-        /// <returns>True if correct, false otherwise</returns>
+        // Kiểm tra đáp án đúng - implement từ abstract method
         public override bool IsAnswerCorrect(string userAnswer)
         {
             if (string.IsNullOrWhiteSpace(userAnswer))
@@ -84,10 +69,7 @@ namespace QuizzAPP.Models
             return normalizedUserAnswer == normalizedCorrectAnswer;
         }
 
-        /// <summary>
-        /// Get formatted display text with options
-        /// </summary>
-        /// <returns>Question with numbered options</returns>
+        // Hiển thị câu hỏi với các lựa chọn được đánh số
         public override string GetDisplayText()
         {
             var displayText = base.GetDisplayText() + "\n";
@@ -97,7 +79,29 @@ namespace QuizzAPP.Models
             }
             return displayText.TrimEnd();
         }
-
-
     }
 }
+
+/*
+ * GIẢI THÍCH VỀ LỚP MULTIPLECHOICEQUESTION:
+ *
+ * 1. KẾ THỪA (Inheritance):
+ *    - Kế thừa từ lớp Question
+ *    - Sử dụng constructor của lớp cha với base()
+ *    - Override các abstract method và virtual method
+ *
+ * 2. ĐÓNG GÓI (Encapsulation):
+ *    - Private fields: _options, _correctOptionIndex
+ *    - Public properties với validation logic
+ *    - Bảo vệ dữ liệu với ArgumentException khi không hợp lệ
+ *
+ * 3. ĐA HÌNH (Polymorphism):
+ *    - Override IsAnswerCorrect() với logic riêng cho trắc nghiệm
+ *    - Override GetDisplayText() để hiển thị các lựa chọn
+ *    - Có thể xử lý cả index (0,1,2,3) và text của đáp án
+ *
+ * 4. VALIDATION:
+ *    - Bắt buộc phải có đúng 4 lựa chọn
+ *    - Index đáp án đúng phải từ 0-3
+ *    - Tự động set CorrectAnswer từ Options[correctOptionIndex]
+ */

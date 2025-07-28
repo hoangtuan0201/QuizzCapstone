@@ -255,14 +255,23 @@ namespace QuizzAPP.Forms
         private Question CreateQuestionFromInput()
         {
             string questionText = questionTextBox.Text.Trim();
-            
-            return questionTypeComboBox.SelectedIndex switch
+
+            if (questionTypeComboBox.SelectedIndex == 0)
             {
-                0 => CreateMultipleChoiceQuestion(questionText),
-                1 => CreateOpenEndedQuestion(questionText),
-                2 => CreateTrueFalseQuestion(questionText),
-                _ => throw new InvalidOperationException("Invalid question type selected.")
-            };
+                return CreateMultipleChoiceQuestion(questionText);
+            }
+            else if (questionTypeComboBox.SelectedIndex == 1)
+            {
+                return CreateOpenEndedQuestion(questionText);
+            }
+            else if (questionTypeComboBox.SelectedIndex == 2)
+            {
+                return CreateTrueFalseQuestion(questionText);
+            }
+            else
+            {
+                throw new InvalidOperationException("Invalid question type selected.");
+            }
         }
 
         private MultipleChoiceQuestion CreateMultipleChoiceQuestion(string questionText)
@@ -287,8 +296,14 @@ namespace QuizzAPP.Forms
             {
                 alternatives = alternativeAnswersTextBox.Text
                     .Split(',')
-                    .Select(s => s.Trim())
-                    .Where(s => !string.IsNullOrEmpty(s))
+                    .Select(s =>
+                    {
+                        return s.Trim();
+                    })
+                    .Where(s =>
+                    {
+                        return !string.IsNullOrEmpty(s);
+                    })
                     .ToList();
             }
 
@@ -305,6 +320,12 @@ namespace QuizzAPP.Forms
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void trueFalseComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Không cần xử lý gì đặc biệt cho True/False ComboBox
+            // Giá trị sẽ được lấy khi save
         }
     }
 }

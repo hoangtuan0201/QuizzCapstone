@@ -2,53 +2,39 @@ using System;
 
 namespace QuizzAPP.Models
 {
-    /// <summary>
-    /// Abstract base class for all question types - demonstrates Abstraction and Inheritance
-    /// </summary>
+    // Lớp cơ sở trừu tượng cho tất cả các loại câu hỏi
+    // Thể hiện tính trừu tượng và kế thừa trong OOP
     public abstract class Question
     {
         private string _questionText = string.Empty;
         private string _correctAnswer = string.Empty;
         private int _id;
 
-        /// <summary>
-        /// Unique identifier for the question - demonstrates Encapsulation
-        /// </summary>
+        // ID duy nhất của câu hỏi
         public int Id
         {
-            get => _id;
-            set => _id = value;
+            get { return _id; }
+            set { _id = value; }
         }
 
-        /// <summary>
-        /// The question text - demonstrates Encapsulation
-        /// </summary>
+        // Nội dung câu hỏi
         public string QuestionText
         {
-            get => _questionText;
-            set => _questionText = value ?? throw new ArgumentNullException(nameof(value));
+            get { return _questionText; }
+            set { _questionText = value ?? throw new ArgumentNullException(nameof(value)); }
         }
 
-        /// <summary>
-        /// The correct answer - demonstrates Encapsulation
-        /// </summary>
+        // Đáp án đúng của câu hỏi
         public string CorrectAnswer
         {
-            get => _correctAnswer;
-            set => _correctAnswer = value ?? throw new ArgumentNullException(nameof(value));
+            get { return _correctAnswer; }
+            set { _correctAnswer = value ?? throw new ArgumentNullException(nameof(value)); }
         }
 
-        /// <summary>
-        /// Type of question (Multiple Choice, Open Ended, True/False)
-        /// </summary>
+        // Loại câu hỏi - phải được implement bởi các lớp con
         public abstract string QuestionType { get; }
 
-        /// <summary>
-        /// Constructor for Question base class
-        /// </summary>
-        /// <param name="id">Unique identifier</param>
-        /// <param name="questionText">The question text</param>
-        /// <param name="correctAnswer">The correct answer</param>
+        // Constructor của lớp Question
         protected Question(int id, string questionText, string correctAnswer)
         {
             Id = id;
@@ -56,29 +42,43 @@ namespace QuizzAPP.Models
             CorrectAnswer = correctAnswer;
         }
 
-        /// <summary>
-        /// Abstract method to check if the provided answer is correct - demonstrates Abstraction
-        /// </summary>
-        /// <param name="userAnswer">The user's answer</param>
-        /// <returns>True if correct, false otherwise</returns>
+        // Kiểm tra đáp án có đúng không - mỗi loại câu hỏi sẽ implement khác nhau
         public abstract bool IsAnswerCorrect(string userAnswer);
 
-        /// <summary>
-        /// Virtual method to get display text for the question
-        /// </summary>
-        /// <returns>Formatted question text</returns>
+        // Lấy text hiển thị của câu hỏi
         public virtual string GetDisplayText()
         {
             return $"Q{Id}: {QuestionText}";
         }
 
-        /// <summary>
-        /// Override ToString for debugging and display purposes
-        /// </summary>
-        /// <returns>String representation of the question</returns>
+        // Override ToString để hiển thị thông tin câu hỏi
         public override string ToString()
         {
             return $"{QuestionType} - {QuestionText}";
         }
     }
 }
+
+/*
+ * GIẢI THÍCH VỀ LỚP QUESTION:
+ *
+ * 1. TÍNH TRỪU TƯỢNG (Abstraction):
+ *    - Question là abstract class, không thể tạo instance trực tiếp
+ *    - Có abstract method IsAnswerCorrect() bắt buộc các lớp con phải implement
+ *    - Có abstract property QuestionType để xác định loại câu hỏi
+ *
+ * 2. TÍNH ĐÓNG GÓI (Encapsulation):
+ *    - Các field private (_id, _questionText, _correctAnswer)
+ *    - Truy cập thông qua public properties với validation
+ *    - Bảo vệ dữ liệu khỏi truy cập trực tiếp
+ *
+ * 3. TÍNH KẾ THỪA (Inheritance):
+ *    - Là lớp cha cho MultipleChoiceQuestion, OpenEndedQuestion, TrueFalseQuestion
+ *    - Cung cấp các thuộc tính và phương thức chung
+ *    - Constructor được gọi từ các lớp con
+ *
+ * 4. TÍNH ĐA HÌNH (Polymorphism):
+ *    - Method IsAnswerCorrect() được implement khác nhau ở mỗi lớp con
+ *    - Virtual method GetDisplayText() có thể được override
+ *    - Có thể xử lý các loại câu hỏi khác nhau thông qua interface chung
+ */

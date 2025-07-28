@@ -2,19 +2,15 @@ using System;
 
 namespace QuizzAPP.Models
 {
-    /// <summary>
-    /// True/False question implementation - demonstrates Inheritance
-    /// </summary>
+    // Câu hỏi đúng/sai - kế thừa từ Question
     public class TrueFalseQuestion : Question
     {
         private bool _isTrue;
 
-        /// <summary>
-        /// Whether the statement is true or false - demonstrates Encapsulation
-        /// </summary>
+        // Câu lệnh đúng hay sai
         public bool IsTrue
         {
-            get => _isTrue;
+            get { return _isTrue; }
             set
             {
                 _isTrue = value;
@@ -23,28 +19,20 @@ namespace QuizzAPP.Models
             }
         }
 
-        /// <summary>
-        /// Question type identifier
-        /// </summary>
-        public override string QuestionType => "True/False";
+        // Loại câu hỏi
+        public override string QuestionType
+        {
+            get { return "True/False"; }
+        }
 
-        /// <summary>
-        /// Constructor for True/False Question
-        /// </summary>
-        /// <param name="id">Unique identifier</param>
-        /// <param name="questionText">The statement to evaluate</param>
-        /// <param name="isTrue">Whether the statement is true or false</param>
+        // Constructor
         public TrueFalseQuestion(int id, string questionText, bool isTrue)
             : base(id, questionText, isTrue ? "True" : "False")
         {
             IsTrue = isTrue;
         }
 
-        /// <summary>
-        /// Check if the provided answer is correct - implements abstract method
-        /// </summary>
-        /// <param name="userAnswer">The user's answer (True/False, T/F, 1/0, Yes/No)</param>
-        /// <returns>True if correct, false otherwise</returns>
+        // Kiểm tra đáp án đúng - hỗ trợ nhiều định dạng (True/False, T/F, 1/0, Yes/No)
         public override bool IsAnswerCorrect(string userAnswer)
         {
             if (string.IsNullOrWhiteSpace(userAnswer))
@@ -53,27 +41,59 @@ namespace QuizzAPP.Models
             string normalizedAnswer = userAnswer.Trim().ToLowerInvariant();
 
             // Parse various true representations
-            bool userAnswerBool = normalizedAnswer switch
+            bool userAnswerBool;
+            if (normalizedAnswer == "true" || normalizedAnswer == "t" || normalizedAnswer == "1" ||
+                normalizedAnswer == "yes" || normalizedAnswer == "y")
             {
-                "true" or "t" or "1" or "yes" or "y" => true,
-                "false" or "f" or "0" or "no" or "n" => false,
-                _ => throw new ArgumentException($"Invalid answer format: {userAnswer}. Please use True/False, T/F, 1/0, or Yes/No.")
-            };
+                userAnswerBool = true;
+            }
+            else if (normalizedAnswer == "false" || normalizedAnswer == "f" || normalizedAnswer == "0" ||
+                     normalizedAnswer == "no" || normalizedAnswer == "n")
+            {
+                userAnswerBool = false;
+            }
+            else
+            {
+                throw new ArgumentException($"Invalid answer format: {userAnswer}. Please use True/False, T/F, 1/0, or Yes/No.");
+            }
 
             return userAnswerBool == IsTrue;
         }
 
 
 
-        /// <summary>
-        /// Get formatted display text with True/False options
-        /// </summary>
-        /// <returns>Question with True/False options</returns>
+        // Hiển thị câu hỏi với hướng dẫn True/False
         public override string GetDisplayText()
         {
             return base.GetDisplayText() + "\n1. True\n2. False";
         }
-
-
     }
 }
+
+/*
+ * GIẢI THÍCH VỀ LỚP TRUEFALSEQUESTION:
+ *
+ * 1. KẾ THỪA (Inheritance):
+ *    - Kế thừa từ lớp Question
+ *    - Sử dụng constructor của lớp cha
+ *    - Override abstract method IsAnswerCorrect()
+ *
+ * 2. TÍNH LINH HOẠT:
+ *    - Hỗ trợ nhiều định dạng đầu vào:
+ *      + True/False (đầy đủ)
+ *      + T/F (viết tắt)
+ *      + 1/0 (số)
+ *      + Yes/No (tiếng Anh)
+ *      + Y/N (viết tắt Yes/No)
+ *
+ * 3. VALIDATION & PARSING:
+ *    - Normalize input (trim, lowercase)
+ *    - Parse thành boolean trước khi so sánh
+ *    - Throw ArgumentException nếu format không hợp lệ
+ *
+ * 4. USER EXPERIENCE:
+ *    - GetDisplayText() hiển thị "1. True\n2. False"
+ *    - Dễ dàng cho người dùng chọn
+ *    - Constructor đơn giản chỉ cần isTrue boolean
+ *    - Tự động set CorrectAnswer thành "True" hoặc "False"
+ */

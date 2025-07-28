@@ -5,50 +5,45 @@ using QuizzAPP.Models;
 
 namespace QuizzAPP.Managers
 {
-    /// <summary>
-    /// Manages quiz questions and game logic - demonstrates Encapsulation
-    /// </summary>
+    // Quản lý câu hỏi và logic game
     public class QuizManager
     {
         private List<Question> _questions;
         private int _nextQuestionId;
 
-        /// <summary>
-        /// Read-only access to questions list - demonstrates Encapsulation
-        /// </summary>
-        public IReadOnlyList<Question> Questions => _questions.AsReadOnly();
+        // Danh sách câu hỏi (chỉ đọc)
+        public IReadOnlyList<Question> Questions
+        {
+            get { return _questions.AsReadOnly(); }
+        }
 
-        /// <summary>
-        /// Total number of questions in the quiz
-        /// </summary>
-        public int QuestionCount => _questions.Count;
+        // Tổng số câu hỏi
+        public int QuestionCount
+        {
+            get { return _questions.Count; }
+        }
 
-        /// <summary>
-        /// Event fired when a question is added, updated, or removed
-        /// </summary>
+        // Event khi có thay đổi câu hỏi (thêm, sửa, xóa)
         public event EventHandler<QuestionEventArgs>? QuestionChanged;
 
-        /// <summary>
-        /// Constructor initializes empty question list
-        /// </summary>
+        // Constructor
         public QuizManager()
         {
             _questions = new List<Question>();
             _nextQuestionId = 1;
         }
 
-        /// <summary>
-        /// Add a new question to the quiz
-        /// </summary>
-        /// <param name="question">Question to add</param>
-        /// <returns>The assigned question ID</returns>
+        // Thêm câu hỏi mới vào quiz
         public int AddQuestion(Question question)
         {
             if (question == null)
                 throw new ArgumentNullException(nameof(question));
 
             // Assign new ID if not set or if ID already exists
-            if (question.Id <= 0 || _questions.Any(q => q.Id == question.Id))
+            if (question.Id <= 0 || _questions.Any(q =>
+            {
+                return q.Id == question.Id;
+            }))
             {
                 question.Id = _nextQuestionId++;
             }
@@ -64,14 +59,13 @@ namespace QuizzAPP.Managers
             return question.Id;
         }
 
-        /// <summary>
-        /// Remove a question by ID
-        /// </summary>
-        /// <param name="questionId">ID of question to remove</param>
-        /// <returns>True if removed, false if not found</returns>
+        // Xóa câu hỏi theo ID
         public bool RemoveQuestion(int questionId)
         {
-            var question = _questions.FirstOrDefault(q => q.Id == questionId);
+            var question = _questions.FirstOrDefault(q =>
+            {
+                return q.Id == questionId;
+            });
             if (question == null)
                 return false;
 
@@ -80,17 +74,16 @@ namespace QuizzAPP.Managers
             return true;
         }
 
-        /// <summary>
-        /// Update an existing question
-        /// </summary>
-        /// <param name="updatedQuestion">Updated question data</param>
-        /// <returns>True if updated, false if not found</returns>
+        // Cập nhật câu hỏi hiện có
         public bool UpdateQuestion(Question updatedQuestion)
         {
             if (updatedQuestion == null)
                 throw new ArgumentNullException(nameof(updatedQuestion));
 
-            var existingIndex = _questions.FindIndex(q => q.Id == updatedQuestion.Id);
+            var existingIndex = _questions.FindIndex(q =>
+            {
+                return q.Id == updatedQuestion.Id;
+            });
             if (existingIndex == -1)
                 return false;
 
@@ -99,29 +92,25 @@ namespace QuizzAPP.Managers
             return true;
         }
 
-        /// <summary>
-        /// Get a question by ID
-        /// </summary>
-        /// <param name="questionId">Question ID</param>
-        /// <returns>Question if found, null otherwise</returns>
+        // Lấy câu hỏi theo ID
         public Question? GetQuestion(int questionId)
         {
-            return _questions.FirstOrDefault(q => q.Id == questionId);
+            return _questions.FirstOrDefault(q =>
+            {
+                return q.Id == questionId;
+            });
         }
 
-        /// <summary>
-        /// Get questions by type
-        /// </summary>
-        /// <param name="questionType">Type of questions to retrieve</param>
-        /// <returns>List of questions of the specified type</returns>
+        // Lấy câu hỏi theo loại
         public List<Question> GetQuestionsByType(string questionType)
         {
-            return _questions.Where(q => q.QuestionType.Equals(questionType, StringComparison.OrdinalIgnoreCase)).ToList();
+            return _questions.Where(q =>
+            {
+                return q.QuestionType.Equals(questionType, StringComparison.OrdinalIgnoreCase);
+            }).ToList();
         }
 
-        /// <summary>
-        /// Clear all questions
-        /// </summary>
+        // Xóa tất cả câu hỏi
         public void ClearAllQuestions()
         {
             var removedQuestions = _questions.ToList();
@@ -134,10 +123,7 @@ namespace QuizzAPP.Managers
             }
         }
 
-        /// <summary>
-        /// Get questions in random order for playing
-        /// </summary>
-        /// <returns>Shuffled list of questions</returns>
+        // Lấy câu hỏi theo thứ tự ngẫu nhiên để chơi
         public List<Question> GetShuffledQuestions()
         {
             var shuffled = _questions.ToList();
@@ -153,19 +139,13 @@ namespace QuizzAPP.Managers
             return shuffled;
         }
 
-        /// <summary>
-        /// Check if quiz has questions and is ready to play
-        /// </summary>
-        /// <returns>True if quiz can be played</returns>
+        // Kiểm tra quiz có sẵn sàng chơi không
         public bool IsReadyToPlay()
         {
             return _questions.Count > 0;
         }
 
-        /// <summary>
-        /// Get summary statistics about the quiz
-        /// </summary>
-        /// <returns>Quiz statistics</returns>
+        // Lấy thống kê tổng quan về quiz
         public QuizStatistics GetStatistics()
         {
             return new QuizStatistics
@@ -177,19 +157,14 @@ namespace QuizzAPP.Managers
             };
         }
 
-        /// <summary>
-        /// Fire the QuestionChanged event
-        /// </summary>
-        /// <param name="args">Event arguments</param>
+        // Kích hoạt event QuestionChanged
         protected virtual void OnQuestionChanged(QuestionEventArgs args)
         {
             QuestionChanged?.Invoke(this, args);
         }
     }
 
-    /// <summary>
-    /// Event arguments for question changes
-    /// </summary>
+    // Event arguments cho thay đổi câu hỏi
     public class QuestionEventArgs : EventArgs
     {
         public Question Question { get; }
@@ -202,9 +177,7 @@ namespace QuizzAPP.Managers
         }
     }
 
-    /// <summary>
-    /// Types of question changes
-    /// </summary>
+    // Các loại thay đổi câu hỏi
     public enum QuestionChangeType
     {
         Added,
@@ -212,9 +185,7 @@ namespace QuizzAPP.Managers
         Removed
     }
 
-    /// <summary>
-    /// Quiz statistics data
-    /// </summary>
+    // Dữ liệu thống kê quiz
     public class QuizStatistics
     {
         public int TotalQuestions { get; set; }
@@ -223,3 +194,37 @@ namespace QuizzAPP.Managers
         public int TrueFalseCount { get; set; }
     }
 }
+
+/*
+ * GIẢI THÍCH VỀ LỚP QUIZMANAGER:
+ *
+ * 1. QUẢN LÝ DỮ LIỆU (Data Management):
+ *    - Sử dụng List<Question> để lưu trữ câu hỏi trong memory
+ *    - Tự động tạo ID cho câu hỏi mới (_nextQuestionId)
+ *    - Cung cấp IReadOnlyList để bảo vệ dữ liệu khỏi thay đổi trực tiếp
+ *
+ * 2. CRUD OPERATIONS:
+ *    - AddQuestion(): Thêm câu hỏi mới với validation
+ *    - UpdateQuestion(): Cập nhật câu hỏi hiện có
+ *    - RemoveQuestion(): Xóa câu hỏi theo ID
+ *    - GetQuestion(): Lấy câu hỏi theo ID
+ *    - ClearAllQuestions(): Xóa tất cả câu hỏi
+ *
+ * 3. EVENT SYSTEM:
+ *    - QuestionChanged event thông báo khi có thay đổi
+ *    - QuestionEventArgs chứa thông tin về thay đổi
+ *    - QuestionChangeType enum: Added, Updated, Removed
+ *    - UI có thể subscribe để cập nhật real-time
+ *
+ * 4. GAME FEATURES:
+ *    - GetShuffledQuestions(): Trộn câu hỏi ngẫu nhiên cho game
+ *    - IsReadyToPlay(): Kiểm tra có thể chơi không
+ *    - GetQuestionsByType(): Lọc theo loại câu hỏi
+ *    - GetStatistics(): Thống kê tổng quan
+ *
+ * 5. DESIGN PATTERNS:
+ *    - Observer Pattern: Event system cho UI updates
+ *    - Repository Pattern: Quản lý collection của Question
+ *    - Encapsulation: Private fields với public properties
+ *    - Single Responsibility: Chỉ quản lý câu hỏi và logic liên quan
+ */
