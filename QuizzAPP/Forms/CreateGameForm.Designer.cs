@@ -42,255 +42,261 @@ namespace QuizzAPP.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainPanel = new System.Windows.Forms.Panel();
-            this.titleLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.questionsCard = new MaterialSkin.Controls.MaterialCard();
-            this.questionsLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.questionsListBox = new System.Windows.Forms.ListBox();
-            this.addButton = new MaterialSkin.Controls.MaterialButton();
-            this.editButton = new MaterialSkin.Controls.MaterialButton();
-            this.deleteButton = new MaterialSkin.Controls.MaterialButton();
-            this.clearAllButton = new MaterialSkin.Controls.MaterialButton();
-            this.previewCard = new MaterialSkin.Controls.MaterialCard();
-            this.previewTitleLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.previewLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.closeButton = new MaterialSkin.Controls.MaterialButton();
-            this.mainPanel.SuspendLayout();
-            this.questionsCard.SuspendLayout();
-            this.previewCard.SuspendLayout();
-            this.SuspendLayout();
+            mainPanel = new System.Windows.Forms.Panel();
+            closeButton = new MaterialSkin.Controls.MaterialButton();
+            previewCard = new MaterialSkin.Controls.MaterialCard();
+            previewLabel = new MaterialSkin.Controls.MaterialLabel();
+            previewTitleLabel = new MaterialSkin.Controls.MaterialLabel();
+            clearAllButton = new MaterialSkin.Controls.MaterialButton();
+            deleteButton = new MaterialSkin.Controls.MaterialButton();
+            editButton = new MaterialSkin.Controls.MaterialButton();
+            addButton = new MaterialSkin.Controls.MaterialButton();
+            questionsCard = new MaterialSkin.Controls.MaterialCard();
+            questionsListBox = new System.Windows.Forms.ListBox();
+            questionsLabel = new MaterialSkin.Controls.MaterialLabel();
+            titleLabel = new MaterialSkin.Controls.MaterialLabel();
+            mainPanel.SuspendLayout();
+            previewCard.SuspendLayout();
+            questionsCard.SuspendLayout();
+            SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.closeButton);
-            this.mainPanel.Controls.Add(this.previewCard);
-            this.mainPanel.Controls.Add(this.clearAllButton);
-            this.mainPanel.Controls.Add(this.deleteButton);
-            this.mainPanel.Controls.Add(this.editButton);
-            this.mainPanel.Controls.Add(this.addButton);
-            this.mainPanel.Controls.Add(this.questionsCard);
-            this.mainPanel.Controls.Add(this.titleLabel);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(3, 64);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Padding = new System.Windows.Forms.Padding(24);
-            this.mainPanel.Size = new System.Drawing.Size(894, 633);
-            this.mainPanel.TabIndex = 0;
-            // 
-            // titleLabel
-            // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Depth = 0;
-            this.titleLabel.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.titleLabel.Location = new System.Drawing.Point(24, 24);
-            this.titleLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(264, 29);
-            this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "Manage Quiz Questions";
-            // 
-            // questionsCard
-            // 
-            this.questionsCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.questionsCard.Controls.Add(this.questionsListBox);
-            this.questionsCard.Controls.Add(this.questionsLabel);
-            this.questionsCard.Depth = 0;
-            this.questionsCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.questionsCard.Location = new System.Drawing.Point(24, 70);
-            this.questionsCard.Margin = new System.Windows.Forms.Padding(14);
-            this.questionsCard.MouseState = MaterialSkin.MouseState.HOVER;
-            this.questionsCard.Name = "questionsCard";
-            this.questionsCard.Padding = new System.Windows.Forms.Padding(16);
-            this.questionsCard.Size = new System.Drawing.Size(420, 400);
-            this.questionsCard.TabIndex = 1;
-            // 
-            // questionsLabel
-            // 
-            this.questionsLabel.AutoSize = true;
-            this.questionsLabel.Depth = 0;
-            this.questionsLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.questionsLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.questionsLabel.Location = new System.Drawing.Point(16, 16);
-            this.questionsLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.questionsLabel.Name = "questionsLabel";
-            this.questionsLabel.Size = new System.Drawing.Size(73, 19);
-            this.questionsLabel.TabIndex = 0;
-            this.questionsLabel.Text = "Questions";
-            // 
-            // questionsListBox
-            // 
-            this.questionsListBox.Font = new System.Drawing.Font("Roboto", 10F);
-            this.questionsListBox.FormattingEnabled = true;
-            this.questionsListBox.ItemHeight = 17;
-            this.questionsListBox.Location = new System.Drawing.Point(16, 45);
-            this.questionsListBox.Name = "questionsListBox";
-            this.questionsListBox.Size = new System.Drawing.Size(388, 327);
-            this.questionsListBox.TabIndex = 1;
-            this.questionsListBox.SelectedIndexChanged += new System.EventHandler(this.questionsListBox_SelectedIndexChanged);
-            this.questionsListBox.DoubleClick += new System.EventHandler(this.questionsListBox_DoubleClick);
-            // 
-            // addButton
-            // 
-            this.addButton.AutoSize = false;
-            this.addButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.addButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.addButton.Depth = 0;
-            this.addButton.HighEmphasis = true;
-            this.addButton.Icon = null;
-            this.addButton.Location = new System.Drawing.Point(24, 490);
-            this.addButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.addButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.addButton.Name = "addButton";
-            this.addButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.addButton.Size = new System.Drawing.Size(100, 36);
-            this.addButton.TabIndex = 2;
-            this.addButton.Text = "ADD";
-            this.addButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.addButton.UseAccentColor = false;
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // editButton
-            // 
-            this.editButton.AutoSize = false;
-            this.editButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.editButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.editButton.Depth = 0;
-            this.editButton.HighEmphasis = true;
-            this.editButton.Icon = null;
-            this.editButton.Location = new System.Drawing.Point(134, 490);
-            this.editButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.editButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.editButton.Name = "editButton";
-            this.editButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.editButton.Size = new System.Drawing.Size(100, 36);
-            this.editButton.TabIndex = 3;
-            this.editButton.Text = "EDIT";
-            this.editButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
-            this.editButton.UseAccentColor = false;
-            this.editButton.UseVisualStyleBackColor = true;
-            this.editButton.Click += new System.EventHandler(this.editButton_Click);
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.AutoSize = false;
-            this.deleteButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.deleteButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.deleteButton.Depth = 0;
-            this.deleteButton.HighEmphasis = false;
-            this.deleteButton.Icon = null;
-            this.deleteButton.Location = new System.Drawing.Point(244, 490);
-            this.deleteButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.deleteButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.deleteButton.Size = new System.Drawing.Size(100, 36);
-            this.deleteButton.TabIndex = 4;
-            this.deleteButton.Text = "DELETE";
-            this.deleteButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.deleteButton.UseAccentColor = false;
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // clearAllButton
-            // 
-            this.clearAllButton.AutoSize = false;
-            this.clearAllButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.clearAllButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.clearAllButton.Depth = 0;
-            this.clearAllButton.HighEmphasis = false;
-            this.clearAllButton.Icon = null;
-            this.clearAllButton.Location = new System.Drawing.Point(354, 490);
-            this.clearAllButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.clearAllButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.clearAllButton.Name = "clearAllButton";
-            this.clearAllButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.clearAllButton.Size = new System.Drawing.Size(90, 36);
-            this.clearAllButton.TabIndex = 5;
-            this.clearAllButton.Text = "CLEAR ALL";
-            this.clearAllButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.clearAllButton.UseAccentColor = false;
-            this.clearAllButton.UseVisualStyleBackColor = true;
-            this.clearAllButton.Click += new System.EventHandler(this.clearAllButton_Click);
-            // 
-            // previewCard
-            // 
-            this.previewCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.previewCard.Controls.Add(this.previewLabel);
-            this.previewCard.Controls.Add(this.previewTitleLabel);
-            this.previewCard.Depth = 0;
-            this.previewCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.previewCard.Location = new System.Drawing.Point(464, 70);
-            this.previewCard.Margin = new System.Windows.Forms.Padding(14);
-            this.previewCard.MouseState = MaterialSkin.MouseState.HOVER;
-            this.previewCard.Name = "previewCard";
-            this.previewCard.Padding = new System.Windows.Forms.Padding(16);
-            this.previewCard.Size = new System.Drawing.Size(600, 400);
-            this.previewCard.TabIndex = 6;
-            // 
-            // previewTitleLabel
-            // 
-            this.previewTitleLabel.AutoSize = true;
-            this.previewTitleLabel.Depth = 0;
-            this.previewTitleLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.previewTitleLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.previewTitleLabel.Location = new System.Drawing.Point(16, 16);
-            this.previewTitleLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.previewTitleLabel.Name = "previewTitleLabel";
-            this.previewTitleLabel.Size = new System.Drawing.Size(58, 19);
-            this.previewTitleLabel.TabIndex = 0;
-            this.previewTitleLabel.Text = "Preview";
-            // 
-            // previewLabel
-            // 
-            this.previewLabel.AutoSize = true;
-            this.previewLabel.Depth = 0;
-            this.previewLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.previewLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
-            this.previewLabel.Location = new System.Drawing.Point(16, 45);
-            this.previewLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.previewLabel.Name = "previewLabel";
-            this.previewLabel.Size = new System.Drawing.Size(234, 19);
-            this.previewLabel.TabIndex = 1;
-            this.previewLabel.Text = "Select a question to preview it here.";
+            mainPanel.Controls.Add(closeButton);
+            mainPanel.Controls.Add(previewCard);
+            mainPanel.Controls.Add(clearAllButton);
+            mainPanel.Controls.Add(deleteButton);
+            mainPanel.Controls.Add(editButton);
+            mainPanel.Controls.Add(addButton);
+            mainPanel.Controls.Add(questionsCard);
+            mainPanel.Controls.Add(titleLabel);
+            mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainPanel.Location = new System.Drawing.Point(4, 74);
+            mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Padding = new System.Windows.Forms.Padding(28);
+            mainPanel.Size = new System.Drawing.Size(1042, 731);
+            mainPanel.TabIndex = 0;
             // 
             // closeButton
             // 
-            this.closeButton.AutoSize = false;
-            this.closeButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.closeButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.closeButton.Depth = 0;
-            this.closeButton.HighEmphasis = true;
-            this.closeButton.Icon = null;
-            this.closeButton.Location = new System.Drawing.Point(770, 490);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.closeButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.closeButton.Name = "closeButton";
-            this.closeButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.closeButton.Size = new System.Drawing.Size(100, 36);
-            this.closeButton.TabIndex = 7;
-            this.closeButton.Text = "CLOSE";
-            this.closeButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.closeButton.UseAccentColor = true;
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            closeButton.AutoSize = false;
+            closeButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            closeButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            closeButton.Depth = 0;
+            closeButton.HighEmphasis = true;
+            closeButton.Icon = null;
+            closeButton.Location = new System.Drawing.Point(898, 565);
+            closeButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            closeButton.MouseState = MaterialSkin.MouseState.HOVER;
+            closeButton.Name = "closeButton";
+            closeButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            closeButton.Size = new System.Drawing.Size(117, 42);
+            closeButton.TabIndex = 7;
+            closeButton.Text = "CLOSE";
+            closeButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            closeButton.UseAccentColor = true;
+            closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
+            // 
+            // previewCard
+            // 
+            previewCard.BackColor = System.Drawing.Color.FromArgb(((int)((byte)255)), ((int)((byte)255)), ((int)((byte)255)));
+            previewCard.Controls.Add(previewLabel);
+            previewCard.Controls.Add(previewTitleLabel);
+            previewCard.Depth = 0;
+            previewCard.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)222)), ((int)((byte)0)), ((int)((byte)0)), ((int)((byte)0)));
+            previewCard.Location = new System.Drawing.Point(541, 81);
+            previewCard.Margin = new System.Windows.Forms.Padding(16);
+            previewCard.MouseState = MaterialSkin.MouseState.HOVER;
+            previewCard.Name = "previewCard";
+            previewCard.Padding = new System.Windows.Forms.Padding(19, 18, 19, 18);
+            previewCard.Size = new System.Drawing.Size(700, 462);
+            previewCard.TabIndex = 6;
+            // 
+            // previewLabel
+            // 
+            previewLabel.AutoSize = false;
+            previewLabel.Depth = 0;
+            previewLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            previewLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            previewLabel.Location = new System.Drawing.Point(19, 52);
+            previewLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            previewLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            previewLabel.Name = "previewLabel";
+            previewLabel.Size = new System.Drawing.Size(249, 249);
+            previewLabel.TabIndex = 1;
+            previewLabel.Text = "Select a question to preview it here.";
+            // 
+            // previewTitleLabel
+            // 
+            previewTitleLabel.AutoSize = true;
+            previewTitleLabel.Depth = 0;
+            previewTitleLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            previewTitleLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            previewTitleLabel.Location = new System.Drawing.Point(19, 18);
+            previewTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            previewTitleLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            previewTitleLabel.Name = "previewTitleLabel";
+            previewTitleLabel.Size = new System.Drawing.Size(56, 19);
+            previewTitleLabel.TabIndex = 0;
+            previewTitleLabel.Text = "Preview";
+            // 
+            // clearAllButton
+            // 
+            clearAllButton.AutoSize = false;
+            clearAllButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            clearAllButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            clearAllButton.Depth = 0;
+            clearAllButton.HighEmphasis = false;
+            clearAllButton.Icon = null;
+            clearAllButton.Location = new System.Drawing.Point(413, 565);
+            clearAllButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            clearAllButton.MouseState = MaterialSkin.MouseState.HOVER;
+            clearAllButton.Name = "clearAllButton";
+            clearAllButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            clearAllButton.Size = new System.Drawing.Size(105, 42);
+            clearAllButton.TabIndex = 5;
+            clearAllButton.Text = "CLEAR ALL";
+            clearAllButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            clearAllButton.UseAccentColor = false;
+            clearAllButton.UseVisualStyleBackColor = true;
+            clearAllButton.Click += clearAllButton_Click;
+            // 
+            // deleteButton
+            // 
+            deleteButton.AutoSize = false;
+            deleteButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            deleteButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            deleteButton.Depth = 0;
+            deleteButton.HighEmphasis = false;
+            deleteButton.Icon = null;
+            deleteButton.Location = new System.Drawing.Point(285, 565);
+            deleteButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            deleteButton.MouseState = MaterialSkin.MouseState.HOVER;
+            deleteButton.Name = "deleteButton";
+            deleteButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            deleteButton.Size = new System.Drawing.Size(117, 42);
+            deleteButton.TabIndex = 4;
+            deleteButton.Text = "DELETE";
+            deleteButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            deleteButton.UseAccentColor = false;
+            deleteButton.UseVisualStyleBackColor = true;
+            deleteButton.Click += deleteButton_Click;
+            // 
+            // editButton
+            // 
+            editButton.AutoSize = false;
+            editButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            editButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            editButton.Depth = 0;
+            editButton.HighEmphasis = true;
+            editButton.Icon = null;
+            editButton.Location = new System.Drawing.Point(156, 565);
+            editButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            editButton.MouseState = MaterialSkin.MouseState.HOVER;
+            editButton.Name = "editButton";
+            editButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            editButton.Size = new System.Drawing.Size(117, 42);
+            editButton.TabIndex = 3;
+            editButton.Text = "EDIT";
+            editButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            editButton.UseAccentColor = false;
+            editButton.UseVisualStyleBackColor = true;
+            editButton.Click += editButton_Click;
+            // 
+            // addButton
+            // 
+            addButton.AutoSize = false;
+            addButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            addButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            addButton.Depth = 0;
+            addButton.HighEmphasis = true;
+            addButton.Icon = null;
+            addButton.Location = new System.Drawing.Point(28, 565);
+            addButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            addButton.MouseState = MaterialSkin.MouseState.HOVER;
+            addButton.Name = "addButton";
+            addButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            addButton.Size = new System.Drawing.Size(117, 42);
+            addButton.TabIndex = 2;
+            addButton.Text = "ADD";
+            addButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            addButton.UseAccentColor = false;
+            addButton.UseVisualStyleBackColor = true;
+            addButton.Click += addButton_Click;
+            // 
+            // questionsCard
+            // 
+            questionsCard.BackColor = System.Drawing.Color.FromArgb(((int)((byte)255)), ((int)((byte)255)), ((int)((byte)255)));
+            questionsCard.Controls.Add(questionsListBox);
+            questionsCard.Controls.Add(questionsLabel);
+            questionsCard.Depth = 0;
+            questionsCard.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)222)), ((int)((byte)0)), ((int)((byte)0)), ((int)((byte)0)));
+            questionsCard.Location = new System.Drawing.Point(28, 81);
+            questionsCard.Margin = new System.Windows.Forms.Padding(16);
+            questionsCard.MouseState = MaterialSkin.MouseState.HOVER;
+            questionsCard.Name = "questionsCard";
+            questionsCard.Padding = new System.Windows.Forms.Padding(19, 18, 19, 18);
+            questionsCard.Size = new System.Drawing.Size(490, 462);
+            questionsCard.TabIndex = 1;
+            // 
+            // questionsListBox
+            // 
+            questionsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            questionsListBox.FormattingEnabled = true;
+            questionsListBox.Location = new System.Drawing.Point(19, 52);
+            questionsListBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            questionsListBox.Name = "questionsListBox";
+            questionsListBox.Size = new System.Drawing.Size(452, 372);
+            questionsListBox.TabIndex = 1;
+            questionsListBox.SelectedIndexChanged += questionsListBox_SelectedIndexChanged;
+            questionsListBox.DoubleClick += questionsListBox_DoubleClick;
+            // 
+            // questionsLabel
+            // 
+            questionsLabel.AutoSize = true;
+            questionsLabel.Depth = 0;
+            questionsLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            questionsLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            questionsLabel.Location = new System.Drawing.Point(19, 18);
+            questionsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            questionsLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            questionsLabel.Name = "questionsLabel";
+            questionsLabel.Size = new System.Drawing.Size(72, 19);
+            questionsLabel.TabIndex = 0;
+            questionsLabel.Text = "Questions";
+            // 
+            // titleLabel
+            // 
+            titleLabel.AutoSize = true;
+            titleLabel.Depth = 0;
+            titleLabel.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            titleLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            titleLabel.Location = new System.Drawing.Point(28, 28);
+            titleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            titleLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            titleLabel.Name = "titleLabel";
+            titleLabel.Size = new System.Drawing.Size(255, 29);
+            titleLabel.TabIndex = 0;
+            titleLabel.Text = "Manage Quiz Questions";
             // 
             // CreateGameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 700);
-            this.Controls.Add(this.mainPanel);
-            this.Name = "CreateGameForm";
-            this.Text = "Create Quiz Questions";
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            this.questionsCard.ResumeLayout(false);
-            this.questionsCard.PerformLayout();
-            this.previewCard.ResumeLayout(false);
-            this.previewCard.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1050, 808);
+            Controls.Add(mainPanel);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Padding = new System.Windows.Forms.Padding(4, 74, 4, 3);
+            Text = "Create Quiz Questions";
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
+            previewCard.ResumeLayout(false);
+            previewCard.PerformLayout();
+            questionsCard.ResumeLayout(false);
+            questionsCard.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

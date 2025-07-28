@@ -137,23 +137,29 @@ namespace QuizzAPP.Forms
         private void ShowQuestionPreview(Question question)
         {
             previewLabel.Text = question.GetDisplayText();
-            
+
+            // Thêm phần hiển thị đáp án với format đẹp hơn
+            previewLabel.Text += "\n\n" + "".PadRight(50, '=');
+            previewLabel.Text += "\n📝 ĐÁP ÁN:";
+
             switch (question)
             {
                 case MultipleChoiceQuestion mcq:
-                    previewLabel.Text += $"\n\nCorrect Answer: {mcq.CorrectOptionIndex + 1}. {mcq.CorrectAnswer}";
+                    previewLabel.Text += $"\n✅ Correct answer: {mcq.CorrectOptionIndex + 1}. {mcq.CorrectAnswer}";
                     break;
                 case OpenEndedQuestion oeq:
-                    previewLabel.Text += $"\n\nCorrect Answer: {oeq.CorrectAnswer}";
+                    previewLabel.Text += $"\n✅ Correct answer: {oeq.CorrectAnswer}";
                     if (oeq.AlternativeAnswers.Any())
                     {
-                        previewLabel.Text += $"\nAlternative Answers: {string.Join(", ", oeq.AlternativeAnswers)}";
+                        previewLabel.Text += $"\n🔄 Alternative answer: {string.Join(", ", oeq.AlternativeAnswers)}";
                     }
                     break;
                 case TrueFalseQuestion tfq:
-                    previewLabel.Text += $"\n\nCorrect Answer: {tfq.CorrectAnswer}";
+                    previewLabel.Text += $"\n✅ Correct answer: {tfq.CorrectAnswer}";
                     break;
             }
+
+            previewLabel.Text += "\n" + "".PadRight(50, '=');
         }
 
         private void ClearQuestionPreview()
@@ -173,5 +179,7 @@ namespace QuizzAPP.Forms
                 editButton_Click(sender, e);
             }
         }
+
+        
     }
 }
