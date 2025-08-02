@@ -31,7 +31,7 @@ namespace QuizzAPP.Forms
         private MaterialSkin.Controls.MaterialLabel avgTimeLabel;
         private MaterialSkin.Controls.MaterialCard breakdownCard;
         private MaterialSkin.Controls.MaterialLabel breakdownTitleLabel;
-        private System.Windows.Forms.TextBox detailedResultsTextBox;
+        private System.Windows.Forms.RichTextBox detailedResultsTextBox;
         private MaterialSkin.Controls.MaterialLabel performanceLabel;
         private MaterialSkin.Controls.MaterialButton closeButton;
 
@@ -45,7 +45,7 @@ namespace QuizzAPP.Forms
             performanceLabel = new MaterialSkin.Controls.MaterialLabel();
             breakdownCard = new MaterialSkin.Controls.MaterialCard();
             closeButton = new MaterialSkin.Controls.MaterialButton();
-            detailedResultsTextBox = new System.Windows.Forms.TextBox();
+            detailedResultsTextBox = new System.Windows.Forms.RichTextBox();
             breakdownTitleLabel = new MaterialSkin.Controls.MaterialLabel();
             resultsCard = new MaterialSkin.Controls.MaterialCard();
             avgTimeLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -121,16 +121,15 @@ namespace QuizzAPP.Forms
             closeButton.Click += closeButton_Click;
             // 
             // detailedResultsTextBox
-            // 
+            //
             detailedResultsTextBox.BackColor = System.Drawing.Color.White;
             detailedResultsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            detailedResultsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            detailedResultsTextBox.Font = new System.Drawing.Font("Roboto", 10F);
             detailedResultsTextBox.Location = new System.Drawing.Point(23, 52);
             detailedResultsTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            detailedResultsTextBox.Multiline = true;
             detailedResultsTextBox.Name = "detailedResultsTextBox";
             detailedResultsTextBox.ReadOnly = true;
-            detailedResultsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            detailedResultsTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             detailedResultsTextBox.Size = new System.Drawing.Size(590, 213);
             detailedResultsTextBox.TabIndex = 1;
             detailedResultsTextBox.Text = "Detailed results will appear here...";

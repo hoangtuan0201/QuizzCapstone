@@ -6,11 +6,9 @@ using QuizzAPP.Models;
 namespace QuizzAPP.Managers
 {
     // Tính toán và quản lý điểm số quiz
-    public class ScoreCalculator
+    public class ScoreManager
     {
         private List<QuestionResult> _results;
-
-        // Danh sách kết quả câu hỏi (chỉ đọc)
         public IReadOnlyList<QuestionResult> Results
         {
             get { return _results.AsReadOnly(); }
@@ -53,7 +51,7 @@ namespace QuizzAPP.Managers
         }
 
         // Constructor
-        public ScoreCalculator()
+        public ScoreManager()
         {
             _results = new List<QuestionResult>();
         }
@@ -72,7 +70,6 @@ namespace QuizzAPP.Managers
                 TimeSpent = timeSpent,
                 AnsweredAt = DateTime.Now
             };
-
             _results.Add(result);
         }
 

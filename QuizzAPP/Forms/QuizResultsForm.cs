@@ -12,12 +12,12 @@ namespace QuizzAPP.Forms
     public partial class QuizResultsForm : MaterialForm
     {
         private readonly MaterialSkinManager _materialSkinManager;
-        private readonly ScoreCalculator _scoreCalculator;
+        private readonly ScoreManager _scoreManager;
         private readonly TimeTracker _timeTracker;
 
-        public QuizResultsForm(ScoreCalculator scoreCalculator, TimeTracker timeTracker)
+        public QuizResultsForm(ScoreManager scoreManager, TimeTracker timeTracker)
         {
-            _scoreCalculator = scoreCalculator ?? throw new ArgumentNullException(nameof(scoreCalculator));
+            _scoreManager = scoreManager ?? throw new ArgumentNullException(nameof(scoreManager));
             _timeTracker = timeTracker ?? throw new ArgumentNullException(nameof(timeTracker));
 
             // Initialize Material Design
@@ -42,8 +42,8 @@ namespace QuizzAPP.Forms
         private void DisplayResults()
         {
             // Main score
-            scoreLabel.Text = $"Score: {_scoreCalculator.ScoreFraction} ({_scoreCalculator.ScorePercentage:F1}%)";
-            gradeLabel.Text = $"Grade: {_scoreCalculator.LetterGrade}";
+            scoreLabel.Text = $"Score: {_scoreManager.ScoreFraction} ({_scoreManager.ScorePercentage:F1}%)";
+            gradeLabel.Text = $"Grade: {_scoreManager.LetterGrade}";
 
             // Time information
             var totalTime = _timeTracker.TotalElapsed;
@@ -60,8 +60,10 @@ namespace QuizzAPP.Forms
 
         private void DisplayDetailedAnswers()
         {
-            var results = _scoreCalculator.Results;
-            var detailsText = "";
+            var results = _scoreManager.Results;
+
+            // Clear existing content
+            detailedResultsTextBox.Clear();
 
             for (int i = 0; i < results.Count; i++)
             {
@@ -69,35 +71,69 @@ namespace QuizzAPP.Forms
                 var status = result.IsCorrect ? "✓" : "✗";
                 var statusText = result.IsCorrect ? "Correct" : "Wrong";
 
-                detailsText += $"Q{i + 1}: {status} {statusText}\r\n";
-                detailsText += $"Question: {result.Question.QuestionText}\r\n";
+                // Add question header with color
+                AppendColoredText($"Q{i + 1}: {status} {statusText}\r\n",
+                    result.IsCorrect ? Color.Green : Color.Red, true);
+
+                // Add question text (black)
+                AppendColoredText($"Question: {result.Question.QuestionText}\r\n", Color.Black, false);
 
                 // Format user answer based on question type
                 string userAnswerDisplay = FormatUserAnswer(result);
-                detailsText += $"Your Answer: {userAnswerDisplay}\r\n";
-                detailsText += $"Correct Answer: {result.Question.CorrectAnswer}\r\n";
+
+                // Add user answer with color based on correctness
+                AppendColoredText("Your Answer: ", Color.Black, false);
+                AppendColoredText($"{userAnswerDisplay}\r\n",
+                    result.IsCorrect ? Color.Green : Color.Red, false);
+
+                // Add correct answer (always green)
+                AppendColoredText("Correct Answer: ", Color.Black, false);
+                AppendColoredText($"{result.Question.CorrectAnswer}\r\n", Color.Green, false);
 
                 // Add separator line between questions
                 if (i < results.Count - 1)
                 {
-                    detailsText += "".PadRight(50, '-') + "\r\n";
+                    AppendColoredText("".PadRight(50, '-') + "\r\n", Color.Gray, false);
                 }
-                detailsText += "\r\n";
+                AppendColoredText("\r\n", Color.Black, false);
             }
 
-            detailedResultsTextBox.Text = detailsText.TrimEnd();
+            // Scroll to top
             detailedResultsTextBox.SelectionStart = 0;
             detailedResultsTextBox.ScrollToCaret();
+        }
+
+        // Helper method để thêm text với màu sắc vào RichTextBox
+        private void AppendColoredText(string text, Color color, bool bold = false)
+        {
+            int startIndex = detailedResultsTextBox.TextLength;
+            detailedResultsTextBox.AppendText(text);
+
+            detailedResultsTextBox.Select(startIndex, text.Length);
+            detailedResultsTextBox.SelectionColor = color;
+
+            if (bold)
+            {
+                detailedResultsTextBox.SelectionFont = new Font(detailedResultsTextBox.Font, FontStyle.Bold);
+            }
+            else
+            {
+                detailedResultsTextBox.SelectionFont = new Font(detailedResultsTextBox.Font, FontStyle.Regular);
+            }
+
+            // Reset selection
+            detailedResultsTextBox.Select(detailedResultsTextBox.TextLength, 0);
+            detailedResultsTextBox.SelectionColor = Color.Black;
         }
 
         private string FormatUserAnswer(QuestionResult result)
         {
             if (result.Question is MultipleChoiceQuestion mcq)
             {
-                // Convert index back to option text
+                // Convert index back to option text (chỉ hiển thị text, không có số)
                 if (int.TryParse(result.UserAnswer, out int index) && index >= 0 && index < mcq.Options.Count)
                 {
-                    return $"{index + 1}. {mcq.Options[index]}";
+                    return mcq.Options[index];
                 }
             }
 

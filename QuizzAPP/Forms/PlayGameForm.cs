@@ -15,7 +15,7 @@ namespace QuizzAPP.Forms
     {
         private readonly MaterialSkinManager _materialSkinManager;
         private readonly QuizManager _quizManager;
-        private readonly ScoreCalculator _scoreCalculator;
+        private readonly ScoreManager _scoreManager;
         private readonly TimeTracker _timeTracker;
 
         private List<Question> _questions = new List<Question>();
@@ -25,7 +25,7 @@ namespace QuizzAPP.Forms
         public PlayGameForm(QuizManager quizManager)
         {
             _quizManager = quizManager ?? throw new ArgumentNullException(nameof(quizManager));
-            _scoreCalculator = new ScoreCalculator();
+            _scoreManager = new ScoreManager();
             _timeTracker = new TimeTracker();
 
             // Initialize Material Design
@@ -150,7 +150,7 @@ namespace QuizzAPP.Forms
             // Record result
             bool isCorrect = _currentQuestion.IsAnswerCorrect(userAnswer);
 
-            _scoreCalculator.RecordAnswer(_currentQuestion, userAnswer, isCorrect, TimeSpan.Zero);
+            _scoreManager.RecordAnswer(_currentQuestion, userAnswer, isCorrect, TimeSpan.Zero);
 
             // Move to next question
             _currentQuestionIndex++;
@@ -197,7 +197,7 @@ namespace QuizzAPP.Forms
         {
             _timeTracker.StopQuiz();
 
-            var resultsForm = new QuizResultsForm(_scoreCalculator, _timeTracker);
+            var resultsForm = new QuizResultsForm(_scoreManager, _timeTracker);
             resultsForm.ShowDialog();
 
             this.Close();

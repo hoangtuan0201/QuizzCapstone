@@ -75,10 +75,7 @@ namespace QuizzAPP.Utils
             var oeq2 = new OpenEndedQuestion(0, "What is the currency of Japan?", "Yen", alternatives2);
             quizManager.AddQuestion(oeq2);
 
-            // Question 3: Ocean between Europe and America
-            var alternatives3 = new List<string> { "North Atlantic", "Atlantic Ocean" };
-            var oeq3 = new OpenEndedQuestion(0, "Which ocean lies between Europe and North America?", "Atlantic", alternatives3);
-            quizManager.AddQuestion(oeq3);
+        
 
             // Question 4: Desert in Africa
             var alternatives4 = new List<string> { "Sahara Desert" };
@@ -105,10 +102,7 @@ namespace QuizzAPP.Utils
             var tfq3 = new TrueFalseQuestion(0, "The Great Wall of China is visible from space with the naked eye.", false);
             quizManager.AddQuestion(tfq3);
 
-            // Question 4: Antarctica population
-            var tfq4 = new TrueFalseQuestion(0, "Antarctica has a permanent population of indigenous people.", false);
-            quizManager.AddQuestion(tfq4);
-
+   
             
         }
 
