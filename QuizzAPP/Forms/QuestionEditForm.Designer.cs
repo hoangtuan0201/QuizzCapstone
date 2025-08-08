@@ -505,7 +505,6 @@ namespace QuizzAPP.Forms
             titleLabel.Name = "titleLabel";
             titleLabel.Size = new System.Drawing.Size(145, 29);
             titleLabel.TabIndex = 0;
-            titleLabel.Text = "Edit Question";
             // 
             // QuestionEditForm
             // 

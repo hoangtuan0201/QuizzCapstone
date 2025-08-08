@@ -75,7 +75,7 @@ namespace QuizzAPP.Forms
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
             mainPanel.Padding = new System.Windows.Forms.Padding(28);
-            mainPanel.Size = new System.Drawing.Size(1042, 731);
+            mainPanel.Size = new System.Drawing.Size(1292, 723);
             mainPanel.TabIndex = 0;
             // 
             // closeButton
@@ -116,7 +116,6 @@ namespace QuizzAPP.Forms
             // 
             // previewLabel
             // 
-            previewLabel.AutoSize = false;
             previewLabel.Depth = 0;
             previewLabel.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             previewLabel.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
@@ -285,7 +284,7 @@ namespace QuizzAPP.Forms
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1050, 808);
+            ClientSize = new System.Drawing.Size(1300, 800);
             Controls.Add(mainPanel);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Padding = new System.Windows.Forms.Padding(4, 74, 4, 3);

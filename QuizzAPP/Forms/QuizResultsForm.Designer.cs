@@ -34,6 +34,7 @@ namespace QuizzAPP.Forms
         private System.Windows.Forms.RichTextBox detailedResultsTextBox;
         private MaterialSkin.Controls.MaterialLabel performanceLabel;
         private MaterialSkin.Controls.MaterialButton closeButton;
+        private MaterialSkin.Controls.MaterialButton playAgainButton;
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -45,6 +46,7 @@ namespace QuizzAPP.Forms
             performanceLabel = new MaterialSkin.Controls.MaterialLabel();
             breakdownCard = new MaterialSkin.Controls.MaterialCard();
             closeButton = new MaterialSkin.Controls.MaterialButton();
+            playAgainButton = new MaterialSkin.Controls.MaterialButton();
             detailedResultsTextBox = new System.Windows.Forms.RichTextBox();
             breakdownTitleLabel = new MaterialSkin.Controls.MaterialLabel();
             resultsCard = new MaterialSkin.Controls.MaterialCard();
@@ -64,12 +66,13 @@ namespace QuizzAPP.Forms
             mainPanel.Controls.Add(breakdownCard);
             mainPanel.Controls.Add(resultsCard);
             mainPanel.Controls.Add(titleLabel);
+            mainPanel.Controls.Add(playAgainButton);
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(4, 74);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
             mainPanel.Padding = new System.Windows.Forms.Padding(28);
-            mainPanel.Size = new System.Drawing.Size(728, 611);
+            mainPanel.Size = new System.Drawing.Size(728, 643);
             mainPanel.TabIndex = 0;
             // 
             // performanceLabel
@@ -107,7 +110,7 @@ namespace QuizzAPP.Forms
             closeButton.Depth = 0;
             closeButton.HighEmphasis = true;
             closeButton.Icon = null;
-            closeButton.Location = new System.Drawing.Point(511, 275);
+            closeButton.Location = new System.Drawing.Point(580, 610);
             closeButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             closeButton.MouseState = MaterialSkin.MouseState.HOVER;
             closeButton.Name = "closeButton";
@@ -119,7 +122,28 @@ namespace QuizzAPP.Forms
             closeButton.UseAccentColor = true;
             closeButton.UseVisualStyleBackColor = true;
             closeButton.Click += closeButton_Click;
-            // 
+            //
+            // playAgainButton
+            //
+            playAgainButton.AutoSize = false;
+            playAgainButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            playAgainButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            playAgainButton.Depth = 0;
+            playAgainButton.HighEmphasis = true;
+            playAgainButton.Icon = null;
+            playAgainButton.Location = new System.Drawing.Point(440, 610);
+            playAgainButton.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            playAgainButton.MouseState = MaterialSkin.MouseState.HOVER;
+            playAgainButton.Name = "playAgainButton";
+            playAgainButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            playAgainButton.Size = new System.Drawing.Size(120, 42);
+            playAgainButton.TabIndex = 3;
+            playAgainButton.Text = "PLAY AGAIN";
+            playAgainButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            playAgainButton.UseAccentColor = false;
+            playAgainButton.UseVisualStyleBackColor = true;
+            playAgainButton.Click += playAgainButton_Click;
+            //
             // detailedResultsTextBox
             //
             detailedResultsTextBox.BackColor = System.Drawing.Color.White;
@@ -235,7 +259,7 @@ namespace QuizzAPP.Forms
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(736, 688);
+            ClientSize = new System.Drawing.Size(736, 720);
             Controls.Add(mainPanel);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Padding = new System.Windows.Forms.Padding(4, 74, 4, 3);

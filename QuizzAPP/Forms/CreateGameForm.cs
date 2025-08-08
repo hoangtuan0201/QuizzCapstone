@@ -32,7 +32,7 @@ namespace QuizzAPP.Forms
             this.Text = "Create Quiz Questions";
             this.StartPosition = FormStartPosition.CenterParent;
             this.Size = new Size(900, 700);
-            this.MinimumSize = new Size(1300, 600);
+            this.MinimumSize = new Size(1050, 600);
 
             // Load existing questions
             LoadQuestions();
@@ -140,7 +140,7 @@ namespace QuizzAPP.Forms
 
             // Thêm phần hiển thị đáp án với format đẹp hơn
             previewLabel.Text += "\n\n" + "".PadRight(50, '=');
-            previewLabel.Text += "\n📝 ĐÁP ÁN:";
+            previewLabel.Text += "\n📝 Answer:";
 
             switch (question)
             {

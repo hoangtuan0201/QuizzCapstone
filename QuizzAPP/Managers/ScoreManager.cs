@@ -5,10 +5,20 @@ using QuizzAPP.Models;
 
 namespace QuizzAPP.Managers
 {
-    // Tính toán và quản lý điểm số quiz
+    // Tính toán và quản lý điểm số quiz - Gộp cả QuestionResult vào
     public class ScoreManager
     {
+        // Inner class để lưu kết quả từng câu hỏi
+        public class QuestionResult
+        {
+            public Question Question { get; set; } = null!;
+            public string UserAnswer { get; set; } = string.Empty;
+            public bool IsCorrect { get; set; }
+        }
+
         private List<QuestionResult> _results;
+    
+        // Danh sách kết quả câu hỏi (chỉ đọc)
         public IReadOnlyList<QuestionResult> Results
         {
             get { return _results.AsReadOnly(); }
@@ -23,13 +33,7 @@ namespace QuizzAPP.Managers
         // Số câu trả lời đúng
         public int CorrectAnswers
         {
-            get { return _results.Count(r => { return r.IsCorrect; }); }
-        }
-
-        // Số câu trả lời sai
-        public int IncorrectAnswers
-        {
-            get { return _results.Count(r => { return !r.IsCorrect; }); }
+            get { return _results.Count(r => r.IsCorrect); }
         }
 
         // Điểm số theo phần trăm (0-100)
@@ -66,124 +70,19 @@ namespace QuizzAPP.Managers
             {
                 Question = question,
                 UserAnswer = userAnswer ?? string.Empty,
-                IsCorrect = isCorrect,
-                TimeSpent = timeSpent,
-                AnsweredAt = DateTime.Now
+                IsCorrect = isCorrect
             };
             _results.Add(result);
         }
 
-        // Xóa tất cả kết quả đã ghi
-        public void Reset()
-        {
-            _results.Clear();
-        }
-
-        // Lấy kết quả theo loại câu hỏi
-        public List<QuestionResult> GetResultsByType(string questionType)
-        {
-            return _results.Where(r =>
-            {
-                return r.Question.QuestionType.Equals(questionType, StringComparison.OrdinalIgnoreCase);
-            }).ToList();
-        }
-
-        // Lấy phân tích điểm chi tiết theo loại câu hỏi
-        public ScoreBreakdown GetScoreBreakdown()
-        {
-            var breakdown = new ScoreBreakdown();
-
-            var multipleChoiceResults = GetResultsByType("Multiple Choice");
-            var openEndedResults = GetResultsByType("Open Ended");
-            var trueFalseResults = GetResultsByType("True/False");
-
-            breakdown.MultipleChoice = new TypeScore
-            {
-                Correct = multipleChoiceResults.Count(r => { return r.IsCorrect; }),
-                Total = multipleChoiceResults.Count
-            };
-
-            breakdown.OpenEnded = new TypeScore
-            {
-                Correct = openEndedResults.Count(r => { return r.IsCorrect; }),
-                Total = openEndedResults.Count
-            };
-
-            breakdown.TrueFalse = new TypeScore
-            {
-                Correct = trueFalseResults.Count(r => { return r.IsCorrect; }),
-                Total = trueFalseResults.Count
-            };
-
-            breakdown.Overall = new TypeScore
-            {
-                Correct = CorrectAnswers,
-                Total = TotalQuestions
-            };
-
-            return breakdown;
-        }
-
-        
-
-
         // Chuyển đổi phần trăm thành xếp loại chữ cái
         private string GetLetterGrade(double percentage)
         {
-            if (percentage >= 90)
-            {
-                return "A";
-            }
-            else if (percentage >= 80)
-            {
-                return "B";
-            }
-            else if (percentage >= 70)
-            {
-                return "C";
-            }
-            else if (percentage >= 60)
-            {
-                return "D";
-            }
-            else
-            {
-                return "F";
-            }
-        }
-    }
-
-    // Kết quả trả lời một câu hỏi
-    public class QuestionResult
-    {
-        public Question Question { get; set; } = null!;
-        public string UserAnswer { get; set; } = string.Empty;
-        public bool IsCorrect { get; set; }
-        public TimeSpan TimeSpent { get; set; }
-        public DateTime AnsweredAt { get; set; }
-    }
-
-    // Phân tích điểm theo loại câu hỏi
-    public class ScoreBreakdown
-    {
-        public TypeScore MultipleChoice { get; set; } = new();
-        public TypeScore OpenEnded { get; set; } = new();
-        public TypeScore TrueFalse { get; set; } = new();
-        public TypeScore Overall { get; set; } = new();
-    }
-
-    // Điểm số cho một loại câu hỏi cụ thể
-    public class TypeScore
-    {
-        public int Correct { get; set; }
-        public int Total { get; set; }
-        public double Percentage
-        {
-            get { return Total > 0 ? (double)Correct / Total * 100 : 0; }
-        }
-        public string Fraction
-        {
-            get { return $"{Correct}/{Total}"; }
+            if (percentage >= 90) return "A";
+            if (percentage >= 80) return "B";
+            if (percentage >= 70) return "C";
+            if (percentage >= 60) return "D";
+            return "F";
         }
     }
 }

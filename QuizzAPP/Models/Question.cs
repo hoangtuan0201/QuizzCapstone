@@ -51,11 +51,7 @@ namespace QuizzAPP.Models
             return $"Q{Id}: {QuestionText}";
         }
 
-        // Override ToString để hiển thị thông tin câu hỏi
-        public override string ToString()
-        {
-            return $"{QuestionType} - {QuestionText}";
-        }
+        
     }
 }
 

@@ -197,7 +197,7 @@ namespace QuizzAPP.Forms
         {
             _timeTracker.StopQuiz();
 
-            var resultsForm = new QuizResultsForm(_scoreManager, _timeTracker);
+            var resultsForm = new QuizResultsForm(_scoreManager, _timeTracker, _quizManager);
             resultsForm.ShowDialog();
 
             this.Close();

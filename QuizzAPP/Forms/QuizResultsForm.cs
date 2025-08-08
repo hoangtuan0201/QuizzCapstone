@@ -14,11 +14,13 @@ namespace QuizzAPP.Forms
         private readonly MaterialSkinManager _materialSkinManager;
         private readonly ScoreManager _scoreManager;
         private readonly TimeTracker _timeTracker;
+        private readonly QuizManager _quizManager;
 
-        public QuizResultsForm(ScoreManager scoreManager, TimeTracker timeTracker)
+        public QuizResultsForm(ScoreManager scoreManager, TimeTracker timeTracker, QuizManager quizManager)
         {
             _scoreManager = scoreManager ?? throw new ArgumentNullException(nameof(scoreManager));
             _timeTracker = timeTracker ?? throw new ArgumentNullException(nameof(timeTracker));
+            _quizManager = quizManager ?? throw new ArgumentNullException(nameof(quizManager));
 
             // Initialize Material Design
             _materialSkinManager = MaterialSkinManager.Instance;
@@ -32,8 +34,8 @@ namespace QuizzAPP.Forms
             // Set form properties
             this.Text = "Quiz Results";
             this.StartPosition = FormStartPosition.CenterParent;
-            this.Size = new Size(700, 700);
-            this.MinimumSize = new Size(700, 700);
+            this.Size = new Size(750, 750);
+            this.MinimumSize = new Size(750, 750);
 
             // Display results
             DisplayResults();
@@ -126,7 +128,7 @@ namespace QuizzAPP.Forms
             detailedResultsTextBox.SelectionColor = Color.Black;
         }
 
-        private string FormatUserAnswer(QuestionResult result)
+        private string FormatUserAnswer(ScoreManager.QuestionResult result)
         {
             if (result.Question is MultipleChoiceQuestion mcq)
             {
@@ -147,6 +149,16 @@ namespace QuizzAPP.Forms
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void playAgainButton_Click(object sender, EventArgs e)
+        {
+            // Đóng form hiện tại
+            this.Close();
+
+            // Mở PlayGameForm mới với cùng QuizManager
+            var playGameForm = new PlayGameForm(_quizManager);
+            playGameForm.Show();
         }
 
     }

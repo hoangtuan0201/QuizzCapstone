@@ -5,20 +5,17 @@ using QuizzAPP.Models;
 
 namespace QuizzAPP.Managers
 {
-    // Quản lý câu hỏi và logic game
     public class QuizManager
     {
         private List<Question> _questions;
         private int _nextQuestionId;
 
-        // Danh sách câu hỏi (chỉ đọc)
         public IReadOnlyList<Question> Questions
         {
             get { return _questions.AsReadOnly(); }
         }
 
-        // Tổng số câu hỏi
-        public int QuestionCount
+        public int QuestionCount 
         {
             get { return _questions.Count; }
         }
@@ -30,7 +27,7 @@ namespace QuizzAPP.Managers
         public QuizManager()
         {
             _questions = new List<Question>();
-            _nextQuestionId = 1;
+            _nextQuestionId = 1;    
         }
 
         // Thêm câu hỏi mới vào quiz
@@ -92,23 +89,6 @@ namespace QuizzAPP.Managers
             return true;
         }
 
-        // Lấy câu hỏi theo ID
-        public Question? GetQuestion(int questionId)
-        {
-            return _questions.FirstOrDefault(q =>
-            {
-                return q.Id == questionId;
-            });
-        }
-
-        // Lấy câu hỏi theo loại
-        public List<Question> GetQuestionsByType(string questionType)
-        {
-            return _questions.Where(q =>
-            {
-                return q.QuestionType.Equals(questionType, StringComparison.OrdinalIgnoreCase);
-            }).ToList();
-        }
 
         // Xóa tất cả câu hỏi
         public void ClearAllQuestions()
